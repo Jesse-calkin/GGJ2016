@@ -7,5 +7,7 @@
 //
 
 class GameDataController {
-    
+    var name: String?
+    var room: String?
+    var team: String?
 }
