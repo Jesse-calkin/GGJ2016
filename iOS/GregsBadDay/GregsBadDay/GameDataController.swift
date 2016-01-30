@@ -6,6 +6,8 @@
 //
 //
 
+import Foundation
+
 class GameDataController {
     var name: String?
     var room: String?
@@ -13,11 +15,26 @@ class GameDataController {
     
     var level: Int?
     
+    var session: NSURLSession?
+    
+    var timer: NSTimer?
+    
     func update() {
         
     }
     
-    func makeRequest() {
-        
+    func start() {
+        if (timer == nil) {
+            timer = NSTimer.scheduledTimerWithTimeInterval(5, target: self, selector: "tick", userInfo: nil, repeats: true)
+        }
+    }
+    
+    func stop() {
+        timer?.invalidate()
+        timer = nil
+    }
+    
+    func tick() {
+        print("tick")
     }
 }
