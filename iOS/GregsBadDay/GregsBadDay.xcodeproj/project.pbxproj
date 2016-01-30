@@ -20,6 +20,7 @@
 		AD5242C81C5C9FD700D11583 /* GameDataController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD5242C71C5C9FD700D11583 /* GameDataController.swift */; };
 		AD5242D01C5D245E00D11583 /* GregsBadDayTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD5242CF1C5D245E00D11583 /* GregsBadDayTests.swift */; };
 		ADB912771C5C951400BF747D /* LobbyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADB912761C5C951400BF747D /* LobbyViewController.swift */; };
+		ADDC95911C5D6762009086A2 /* PlayerAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADDC95901C5D6762009086A2 /* PlayerAction.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -50,6 +51,7 @@
 		AD5242CF1C5D245E00D11583 /* GregsBadDayTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GregsBadDayTests.swift; sourceTree = "<group>"; };
 		AD5242D11C5D245E00D11583 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		ADB912761C5C951400BF747D /* LobbyViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LobbyViewController.swift; sourceTree = "<group>"; };
+		ADDC95901C5D6762009086A2 /* PlayerAction.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlayerAction.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -95,6 +97,7 @@
 				AD5242C71C5C9FD700D11583 /* GameDataController.swift */,
 				0FC746821C5C8B9B003F9A6D /* GameViewController.swift */,
 				ADB912761C5C951400BF747D /* LobbyViewController.swift */,
+				ADDC95901C5D6762009086A2 /* PlayerAction.swift */,
 				0FC746C01C5D486D003F9A6D /* Gregs Day */,
 				0FC746891C5C8B9B003F9A6D /* LaunchScreen.storyboard */,
 				0FC746841C5C8B9B003F9A6D /* Main.storyboard */,
@@ -232,6 +235,7 @@
 				0FC746831C5C8B9B003F9A6D /* GameViewController.swift in Sources */,
 				0FC7467F1C5C8B9B003F9A6D /* AppDelegate.swift in Sources */,
 				0FC746BD1C5D4798003F9A6D /* GregsDayViewController.swift in Sources */,
+				ADDC95911C5D6762009086A2 /* PlayerAction.swift in Sources */,
 				0FC746C21C5D48E3003F9A6D /* GregsDayScene.swift in Sources */,
 				AD5242C81C5C9FD700D11583 /* GameDataController.swift in Sources */,
 			);
