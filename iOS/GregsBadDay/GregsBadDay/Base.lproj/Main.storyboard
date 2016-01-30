@@ -17,6 +17,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="SZV-WD-TEh" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="1078.5" y="985.5"/>
         </scene>
         <!--Lobby View Controller-->
         <scene sceneID="9IQ-fd-7mj">
@@ -37,7 +38,7 @@
                                     <rect key="frame" x="26" y="350" width="354" height="30"/>
                                 </variation>
                                 <connections>
-                                    <action selector="startButtonTapped" destination="i7u-lL-qyh" eventType="touchUpInside" id="vQz-7L-2W1"/>
+                                    <segue destination="BV1-FR-VrT" kind="show" id="zaE-uC-Gi5"/>
                                 </connections>
                             </button>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Tl5-rX-bOC">
