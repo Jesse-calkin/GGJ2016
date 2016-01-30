@@ -59,12 +59,12 @@
 			isa = PBXGroup;
 			children = (
 				0FC7467E1C5C8B9B003F9A6D /* AppDelegate.swift */,
-				0FC746801C5C8B9B003F9A6D /* art.scnassets */,
 				0FC746821C5C8B9B003F9A6D /* GameViewController.swift */,
 				ADB912761C5C951400BF747D /* LobbyViewController.swift */,
-				0FC746841C5C8B9B003F9A6D /* Main.storyboard */,
-				0FC746871C5C8B9B003F9A6D /* Assets.xcassets */,
 				0FC746891C5C8B9B003F9A6D /* LaunchScreen.storyboard */,
+				0FC746841C5C8B9B003F9A6D /* Main.storyboard */,
+				0FC746801C5C8B9B003F9A6D /* art.scnassets */,
+				0FC746871C5C8B9B003F9A6D /* Assets.xcassets */,
 				0FC7468C1C5C8B9B003F9A6D /* Info.plist */,
 			);
 			path = GregsBadDay;

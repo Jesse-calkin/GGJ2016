@@ -20,7 +20,7 @@ class LobbyViewController: UIViewController {
         super.viewDidLoad()
     }
     
-    @IBAction func startButtonTapped(startButton: UIButton) {
+    @IBAction func startButtonTapped() {
         
     }
 
