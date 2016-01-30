@@ -40,6 +40,7 @@ class GameDataController: NSObject {
         }
         
         let request = NSMutableURLRequest(URL: url)
+        request.HTTPMethod = "POST"
         request.HTTPBody = bodyData
         let task = session.dataTaskWithRequest(request) { (data, response, error) -> Void in
             completionHandler()
