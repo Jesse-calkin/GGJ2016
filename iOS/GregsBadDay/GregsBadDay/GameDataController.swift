@@ -19,6 +19,10 @@ class GameDataController: NSObject {
     
     var timer: NSTimer?
     
+    func postRequestForPlayerAction(playerAction:PlayerAction) {
+        postRequestForTarget(playerAction.target.rawValue, value:playerAction.value)
+    }
+    
     func postRequestForTarget(target:String, value:Int) {
         //let urlString = "https://voodoo.madsciencesoftware.com"
         let urlString = "https://www.google.com"
