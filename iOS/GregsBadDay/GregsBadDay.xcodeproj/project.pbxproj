@@ -13,6 +13,7 @@
 		0FC746861C5C8B9B003F9A6D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0FC746841C5C8B9B003F9A6D /* Main.storyboard */; };
 		0FC746881C5C8B9B003F9A6D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0FC746871C5C8B9B003F9A6D /* Assets.xcassets */; };
 		0FC7468B1C5C8B9B003F9A6D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0FC746891C5C8B9B003F9A6D /* LaunchScreen.storyboard */; };
+		ADB912771C5C951400BF747D /* LobbyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADB912761C5C951400BF747D /* LobbyViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +25,7 @@
 		0FC746871C5C8B9B003F9A6D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		0FC7468A1C5C8B9B003F9A6D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		0FC7468C1C5C8B9B003F9A6D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		ADB912761C5C951400BF747D /* LobbyViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LobbyViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -59,6 +61,7 @@
 				0FC7467E1C5C8B9B003F9A6D /* AppDelegate.swift */,
 				0FC746801C5C8B9B003F9A6D /* art.scnassets */,
 				0FC746821C5C8B9B003F9A6D /* GameViewController.swift */,
+				ADB912761C5C951400BF747D /* LobbyViewController.swift */,
 				0FC746841C5C8B9B003F9A6D /* Main.storyboard */,
 				0FC746871C5C8B9B003F9A6D /* Assets.xcassets */,
 				0FC746891C5C8B9B003F9A6D /* LaunchScreen.storyboard */,
@@ -138,6 +141,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				ADB912771C5C951400BF747D /* LobbyViewController.swift in Sources */,
 				0FC746831C5C8B9B003F9A6D /* GameViewController.swift in Sources */,
 				0FC7467F1C5C8B9B003F9A6D /* AppDelegate.swift in Sources */,
 			);
@@ -289,6 +293,7 @@
 				0FC746911C5C8B9B003F9A6D /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
