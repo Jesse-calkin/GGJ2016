@@ -9,18 +9,20 @@
 import UIKit
 
 class LobbyViewController: UIViewController {
+    
+    @IBOutlet weak var startButton: UIButton?
+    
+    @IBOutlet weak var nameTextField: UITextField?
+    @IBOutlet weak var roomTextField: UITextField?
+    @IBOutlet weak var teamTextField: UITextField?
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
-    }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
     
+    @IBAction func startButtonTapped(startButton: UIButton) {
+        
+    }
 
     /*
     // MARK: - Navigation
