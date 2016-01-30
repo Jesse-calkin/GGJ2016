@@ -11,7 +11,8 @@ import ObjectiveC
 
 class CardScene: SKScene {
 
-    var debugHitboxes = false
+    var debugHitboxes = true
+    var debugEmitters = true
     var complete = false {
         didSet {
             print("🍻 COMPLETE!")
@@ -27,7 +28,9 @@ class CardScene: SKScene {
         trail = SKEmitterNode(fileNamed: "Trail.sks")
         if let trail = trail {
             trail.name = "Trail"
+//            trail.zPosition = 2
             addChild(trail)
+            if debugEmitters { print("Added emitter: \(trail)") }
         }
 
         card = childNodeWithName("Card") as? SKSpriteNode
@@ -41,7 +44,7 @@ class CardScene: SKScene {
             }
             self.hitboxes.append(node)
         }
-        print("\(hitboxes.count) hitboxes found")
+        if debugHitboxes { print("\(hitboxes.count) hitboxes found") }
     }
     
     override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
@@ -69,21 +72,24 @@ class CardScene: SKScene {
 
     override func update(currentTime: CFTimeInterval) {
         /* Called before each frame is rendered */
-        trail?.targetNode = self
+//        trail?.targetNode = self
 
         guard !complete else { return }
 
         checkProgress()
     }
 
-    func updateTrail(point: CGPoint) {
+    func updateTrail(point: CGPoint) {//TODO: call these methods from the SCNscene VC
+        guard containsPoint(point) else { return }
+        
         if let trail = trail {
             trail.position = point
+            if debugEmitters { print("Trail position updated: \(point)") }
         }
     }
 
     func checkForHit(point: CGPoint) {
-        guard !complete else { return }
+        guard !complete && containsPoint(point) else { return }
 
         let node = nodeAtPoint(point)
         guard node.name == "hitbox" else { return }
