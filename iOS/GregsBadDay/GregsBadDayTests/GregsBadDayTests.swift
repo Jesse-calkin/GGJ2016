@@ -37,4 +37,17 @@ class GregsBadDayTests: XCTestCase {
         
     }
     
+    func testGameDataController() {
+        let gameDataController:GameDataController = GameDataController()
+        gameDataController.postRequestForTarget("head", value: 16)
+        
+        var expectation = expectationWithDescription("heyo")
+
+        waitForExpectationsWithTimeout(50.0) { (error) in
+            if error != nil {
+                
+            }
+        }
+    }
+    
 }
