@@ -10,4 +10,14 @@ class GameDataController {
     var name: String?
     var room: String?
     var team: String?
+    
+    var level: Int?
+    
+    func update() {
+        
+    }
+    
+    func makeRequest() {
+        
+    }
 }
