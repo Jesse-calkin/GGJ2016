@@ -19,11 +19,11 @@ class GameDataController: NSObject {
     
     var timer: NSTimer?
     
-    func postRequestForPlayerAction(playerAction:PlayerAction) {
-        postRequestForTarget(playerAction.target.rawValue, value:playerAction.value)
+    func postRequestForPlayerAction(playerAction:PlayerAction, completionHandler:()->Void) {
+        postRequestForTarget(playerAction.target.rawValue, value:playerAction.value, completionHandler:completionHandler)
     }
     
-    func postRequestForTarget(target:String, value:Int) {
+    func postRequestForTarget(target:String, value:Int, completionHandler:()->Void) {
         //let urlString = "https://voodoo.madsciencesoftware.com"
         let urlString = "https://www.google.com"
         let url = NSURL(string: urlString)!
@@ -43,7 +43,7 @@ class GameDataController: NSObject {
         let request = NSMutableURLRequest(URL: url)
         request.HTTPBody = bodyData
         let task = session.dataTaskWithRequest(request) { (data, response, error) -> Void in
-            print("heyo")
+            completionHandler()
         }
         task.resume()
     }
