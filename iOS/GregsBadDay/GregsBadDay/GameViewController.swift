@@ -9,6 +9,7 @@
 import UIKit
 import QuartzCore
 import SceneKit
+import SpriteKit
 
 class GameViewController: UIViewController {
 
@@ -50,8 +51,13 @@ class GameViewController: UIViewController {
         // add a tap gesture recognizer
         let tapGesture = UITapGestureRecognizer(target: self, action: "handleTap:")
         scnView.addGestureRecognizer(tapGesture)
+
+        if let cardScene = CardScene(fileNamed:"CardScene") {
+            cardScene.scaleMode = .AspectFill
+            scnView.overlaySKScene = cardScene
+        }
     }
-    
+
     func handleTap(gestureRecognize: UIGestureRecognizer) {
         // retrieve the SCNView
         let scnView = self.view as! SCNView
