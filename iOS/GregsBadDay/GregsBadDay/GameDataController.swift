@@ -8,7 +8,7 @@
 
 import Foundation
 
-class GameDataController {
+class GameDataController: NSObject {
     var name: String?
     var room: String?
     var team: String?
