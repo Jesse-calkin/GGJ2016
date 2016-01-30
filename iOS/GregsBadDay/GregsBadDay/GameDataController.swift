@@ -24,8 +24,7 @@ class GameDataController: NSObject {
     }
     
     func postRequestForTarget(target:String, value:Int, completionHandler:()->Void) {
-        //let urlString = "https://voodoo.madsciencesoftware.com"
-        let urlString = "https://www.google.com"
+        let urlString = "https://voodoo.madsciencesoftware.com"
         let url = NSURL(string: urlString)!
         let session = NSURLSession.sharedSession()
         
