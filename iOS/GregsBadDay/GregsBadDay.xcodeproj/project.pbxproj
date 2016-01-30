@@ -13,6 +13,7 @@
 		0FC746861C5C8B9B003F9A6D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0FC746841C5C8B9B003F9A6D /* Main.storyboard */; };
 		0FC746881C5C8B9B003F9A6D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0FC746871C5C8B9B003F9A6D /* Assets.xcassets */; };
 		0FC7468B1C5C8B9B003F9A6D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0FC746891C5C8B9B003F9A6D /* LaunchScreen.storyboard */; };
+		AD5242C81C5C9FD700D11583 /* GameDataController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD5242C71C5C9FD700D11583 /* GameDataController.swift */; };
 		ADB912771C5C951400BF747D /* LobbyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADB912761C5C951400BF747D /* LobbyViewController.swift */; };
 /* End PBXBuildFile section */
 
@@ -25,6 +26,7 @@
 		0FC746871C5C8B9B003F9A6D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		0FC7468A1C5C8B9B003F9A6D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		0FC7468C1C5C8B9B003F9A6D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		AD5242C71C5C9FD700D11583 /* GameDataController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameDataController.swift; sourceTree = "<group>"; };
 		ADB912761C5C951400BF747D /* LobbyViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LobbyViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -59,6 +61,7 @@
 			isa = PBXGroup;
 			children = (
 				0FC7467E1C5C8B9B003F9A6D /* AppDelegate.swift */,
+				AD5242C71C5C9FD700D11583 /* GameDataController.swift */,
 				0FC746821C5C8B9B003F9A6D /* GameViewController.swift */,
 				ADB912761C5C951400BF747D /* LobbyViewController.swift */,
 				0FC746891C5C8B9B003F9A6D /* LaunchScreen.storyboard */,
@@ -144,6 +147,7 @@
 				ADB912771C5C951400BF747D /* LobbyViewController.swift in Sources */,
 				0FC746831C5C8B9B003F9A6D /* GameViewController.swift in Sources */,
 				0FC7467F1C5C8B9B003F9A6D /* AppDelegate.swift in Sources */,
+				AD5242C81C5C9FD700D11583 /* GameDataController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
