@@ -34,7 +34,7 @@ class GameViewController: UIViewController {
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
         
-        setupRoundWithLength(roundLength)
+        setupRoundWithLength(200)
     }
     
     func setupScene() {
@@ -135,7 +135,17 @@ class GameViewController: UIViewController {
                 }
                 
                 let pin = pins[currentPinNumber]
-                
+
+                let particleSystem = SCNParticleSystem(named: "Reactor", inDirectory: "art.scnassets")
+                pin.addParticleSystem(particleSystem!)
+
+                particleSystem?.particleColor = sharedGameDataController().affinity == .Bad ? UIColor.redColor() : UIColor.blueColor()
+                particleSystem?.birthRate = 10000
+                particleSystem?.emitterShape = pin.geometry
+                print(particleSystem?.emittingDirection)
+                particleSystem?.emittingDirection = SCNVector3Make(0.0, 0.0, 1.0)
+//                print("Added particle system: \(particleSystem!) to pin: \(pin)")
+
                 currentPinNumber++
                 animatePinToCoordinates(pin, coordinates: result.worldCoordinates)
             }
