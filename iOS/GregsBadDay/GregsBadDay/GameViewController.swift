@@ -39,7 +39,7 @@ class GameViewController: UIViewController {
     
     func setupScene() {
         // create a new scene
-        let scene = SCNScene(named: "art.scnassets/VoodooDollScene.dae")!
+        let scene = SCNScene(named: "art.scnassets/VoodooDollScene.scn")!
         
         // retrieve the SCNView
         let scnView = self.view as! SCNView
