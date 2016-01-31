@@ -9,21 +9,15 @@
 import Foundation
 
 class GameDataController: NSObject {
-    var name: String?
-    var room: String?
-    var team: String?
-    
-    var level: Int?
+    var roundResult: RoundResult?
     
     var session: NSURLSession?
     
-    var timer: NSTimer?
-    
-    func postRequestForPlayerAction(playerAction:PlayerAction, completionHandler:()->Void) {
+    func postRequestForPlayerAction(playerAction:PlayerAction, completionHandler:(roundResult:RoundResult)->Void) {
         postRequestForTarget(playerAction.target.rawValue, value:playerAction.value, completionHandler:completionHandler)
     }
     
-    func postRequestForTarget(target:String, value:Int, completionHandler:()->Void) {
+    func postRequestForTarget(target:String, value:Int, completionHandler:(roundResult:RoundResult)->Void) {
         let urlString = "https://voodoo.madsciencesoftware.com"
         let url = NSURL(string: urlString)!
         let session = NSURLSession.sharedSession()
@@ -43,29 +37,16 @@ class GameDataController: NSObject {
         request.HTTPMethod = "POST"
         request.HTTPBody = bodyData
         let task = session.dataTaskWithRequest(request) { (data, response, error) -> Void in
-            completionHandler()
+            do {
+                let object = try NSJSONSerialization.JSONObjectWithData(data!, options: NSJSONReadingOptions(rawValue: 0))
+                print(object)
+                let roundResult = RoundResult(currentRound:1, nextRound:2, score:3)
+                completionHandler(roundResult:roundResult)
+            } catch {
+                
+            }
         }
         task.resume()
     }
     
-    func start() {
-        if (timer == nil) {
-            timer = NSTimer.scheduledTimerWithTimeInterval(5, target: self, selector: "tick", userInfo: nil, repeats: true)
-        }
-    }
-    
-    func stop() {
-        timer?.invalidate()
-        timer = nil
-    }
-    
-    func tick() {
-        print("tick")
-    }
-    
-    
-    // arms, legs, body, head
-    
-    // "target"
-    // "value"
 }

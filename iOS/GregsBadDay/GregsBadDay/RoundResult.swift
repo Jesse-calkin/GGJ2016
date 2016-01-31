@@ -10,6 +10,6 @@ import Foundation
 
 struct RoundResult {
     var currentRound: Int
-    var nextRound: Int
+    var nextRound: Int?
     var score: Int
 }
