@@ -52,6 +52,7 @@ class GameDataController: NSObject {
         let request = NSMutableURLRequest()
         
         request.HTTPMethod = "POST"
+        request.timeoutInterval = 60.0
         
         let urlString = "https://voodoo.madsciencesoftware.com"
         let url = NSURL(string: urlString)!
