@@ -17,7 +17,7 @@ class GameViewController: UIViewController {
     let gameDataController = GameDataController()
 
     var roundTimer = NSTimer()
-    var isRoundActive = true
+    var isRoundActive = false
     var playerAction = PlayerAction()
     let roundLength:NSTimeInterval = 20
     
@@ -26,35 +26,17 @@ class GameViewController: UIViewController {
         super.viewDidLoad()
         
         setupScene()
-        
-        setupRoundWithLength(roundLength)
     }
-
+    
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
-
-        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, Int64(3 * Float(NSEC_PER_SEC))), dispatch_get_main_queue()) {
-            self.performSegueWithIdentifier("PresentCardSegue", sender: self)
-        }
+        
+        setupRoundWithLength(roundLength)
     }
     
     func setupScene() {
         // create a new scene
-        let scene = SCNScene(named: "art.scnassets/VoodooTemplate.dae")!
-        
-        // create and add a light to the scene
-        let lightNode = SCNNode()
-        lightNode.light = SCNLight()
-        lightNode.light!.type = SCNLightTypeOmni
-        lightNode.position = SCNVector3(x: 0, y: 10, z: 10)
-        scene.rootNode.addChildNode(lightNode)
-        
-        // create and add an ambient light to the scene
-        let ambientLightNode = SCNNode()
-        ambientLightNode.light = SCNLight()
-        ambientLightNode.light!.type = SCNLightTypeAmbient
-        ambientLightNode.light!.color = UIColor.darkGrayColor()
-        scene.rootNode.addChildNode(ambientLightNode)
+        let scene = SCNScene(named: "art.scnassets/VoodooDollScene.dae")!
         
         // retrieve the SCNView
         let scnView = self.view as! SCNView
@@ -78,20 +60,31 @@ class GameViewController: UIViewController {
     }
     
     func setupRoundWithLength(length: NSTimeInterval) {
-        isRoundActive = true
-        roundTimer = NSTimer.scheduledTimerWithTimeInterval(length, target: self, selector: "roundOver", userInfo: nil, repeats: false)
+        if (!isRoundActive) {
+            isRoundActive = true
+            roundTimer = NSTimer.scheduledTimerWithTimeInterval(length, target: self, selector: "roundOver", userInfo: nil, repeats: false)
+            
+            showCard()
+        }
+    }
+    
+    func showCard() {
+        if isRoundActive {
+            self.performSegueWithIdentifier("PresentCardSegue", sender: self)
+        }
     }
     
     func roundOver() {
         isRoundActive = false
         
+        if (self.presentedViewController != nil) {
+            dismissViewControllerAnimated(true, completion: nil)
+        }
+        
         gameDataController.postRequestForPlayerAction(playerAction, completionHandler: { (roundResult) -> Void in
-            self.setupRoundWithLength(self.roundLength)
+            self.playerAction = PlayerAction()
+            self.animatePinsBack()
         })
-        
-        playerAction = PlayerAction()
-        
-        animatePinsBack()
     }
     
     func handleTap(gestureRecognize: UIGestureRecognizer) {
@@ -122,7 +115,7 @@ class GameViewController: UIViewController {
     
     func animatePinToCoordinates(pin: SCNNode, coordinates: SCNVector3) {
         SCNTransaction.begin()
-        SCNTransaction.setAnimationDuration(1.5)
+        SCNTransaction.setAnimationDuration(1)
         SCNTransaction.setAnimationTimingFunction(CAMediaTimingFunction(name: kCAMediaTimingFunctionEaseInEaseOut))
         
         let x = Float(arc4random_uniform(40)) - 20
@@ -141,7 +134,7 @@ class GameViewController: UIViewController {
         
         SCNTransaction.setCompletionBlock {
             SCNTransaction.begin()
-            SCNTransaction.setAnimationDuration(1)
+            SCNTransaction.setAnimationDuration(0.75)
             SCNTransaction.setAnimationTimingFunction(CAMediaTimingFunction(name: kCAMediaTimingFunctionEaseOut))
             
             let x3 = Float(arc4random_uniform(1)) - originalRotation.x/2
@@ -156,6 +149,10 @@ class GameViewController: UIViewController {
                 SCNTransaction.setAnimationTimingFunction(CAMediaTimingFunction(name: kCAMediaTimingFunctionEaseOut))
                 
                 pin.position = coordinates
+                
+                SCNTransaction.setCompletionBlock({ () -> Void in
+                    self.showCard()
+                })
                 
                 SCNTransaction.commit()
             }
@@ -203,6 +200,10 @@ class GameViewController: UIViewController {
                 SCNTransaction.begin()
                 SCNTransaction.setAnimationDuration(1)
                 SCNTransaction.setAnimationTimingFunction(CAMediaTimingFunction(name: kCAMediaTimingFunctionEaseOut))
+                
+                SCNTransaction.setCompletionBlock({ () -> Void in
+                    self.setupRoundWithLength(self.roundLength)
+                })
                 
                 for pin in pins {
                     pin.position = originalPinPosition
