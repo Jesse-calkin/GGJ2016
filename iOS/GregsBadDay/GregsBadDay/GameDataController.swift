@@ -38,9 +38,11 @@ class GameDataController: NSObject {
         request.HTTPBody = bodyData
         let task = session.dataTaskWithRequest(request) { (data, response, error) -> Void in
             do {
-                let object = try NSJSONSerialization.JSONObjectWithData(data!, options: NSJSONReadingOptions(rawValue: 0))
-                print(object)
-                let roundResult = RoundResult(currentRound:1, nextRound:2, score:3)
+                let dictionary = try NSJSONSerialization.JSONObjectWithData(data!, options:[]) as! [String: AnyObject]
+                let currentRound = dictionary["current_level"] as! Int
+                let nextRound = dictionary["next_level"] as! Int
+                let score = dictionary["body_score"] as! Int
+                let roundResult = RoundResult(currentRound:currentRound, nextRound:nextRound, score:score)
                 completionHandler(roundResult:roundResult)
             } catch {
                 

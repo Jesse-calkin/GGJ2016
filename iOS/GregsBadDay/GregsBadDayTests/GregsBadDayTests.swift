@@ -33,13 +33,10 @@ class GregsBadDayTests: XCTestCase {
         }
     }
     
-    func testRequest() {
-        
-    }
-    
     func testGameDataController() {
         let gameDataController:GameDataController = GameDataController()
-        gameDataController.postRequestForTarget("head", value: 16) { () -> Void in
+        
+        gameDataController.postRequestForTarget("head", value: 16) { (roundResult) -> Void in
             print("done")
         }
         
