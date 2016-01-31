@@ -3,6 +3,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9529"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
         <!--Game View Controller-->
@@ -60,6 +61,9 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="tvtitlescreen" translatesAutoresizingMaskIntoConstraints="NO" id="70U-Aa-e0n" userLabel="TV Title BG">
+                                <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
+                            </imageView>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="s1z-kh-6YB">
                                 <rect key="frame" x="26" y="493" width="34" height="30"/>
                                 <state key="normal" title="Start"/>
@@ -96,7 +100,43 @@
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="70U-Aa-e0n" firstAttribute="top" secondItem="bSr-z0-VPu" secondAttribute="bottom" constant="113" id="0aF-A0-rHk">
+                                <variation key="heightClass=regular-widthClass=regular" constant="0.0"/>
+                            </constraint>
+                            <constraint firstAttribute="trailingMargin" secondItem="70U-Aa-e0n" secondAttribute="trailing" constant="216" id="1Pc-7N-RR8">
+                                <variation key="heightClass=regular-widthClass=regular" constant="0.0"/>
+                            </constraint>
+                            <constraint firstItem="fdK-qU-xUw" firstAttribute="top" secondItem="70U-Aa-e0n" secondAttribute="bottom" constant="539" id="2qQ-6R-mrV">
+                                <variation key="heightClass=regular-widthClass=regular" constant="0.0"/>
+                            </constraint>
+                            <constraint firstItem="70U-Aa-e0n" firstAttribute="leading" secondItem="uYt-FD-fyg" secondAttribute="leadingMargin" constant="304" id="Crc-yM-ceX">
+                                <variation key="heightClass=regular-widthClass=regular" constant="0.0"/>
+                            </constraint>
+                        </constraints>
+                        <variation key="default">
+                            <mask key="subviews">
+                                <exclude reference="70U-Aa-e0n"/>
+                            </mask>
+                            <mask key="constraints">
+                                <exclude reference="0aF-A0-rHk"/>
+                                <exclude reference="1Pc-7N-RR8"/>
+                                <exclude reference="Crc-yM-ceX"/>
+                                <exclude reference="2qQ-6R-mrV"/>
+                            </mask>
+                        </variation>
+                        <variation key="heightClass=regular-widthClass=regular">
+                            <mask key="subviews">
+                                <include reference="70U-Aa-e0n"/>
+                            </mask>
+                            <mask key="constraints">
+                                <include reference="0aF-A0-rHk"/>
+                                <include reference="1Pc-7N-RR8"/>
+                                <include reference="Crc-yM-ceX"/>
+                                <include reference="2qQ-6R-mrV"/>
+                            </mask>
+                        </variation>
                     </view>
                     <connections>
                         <outlet property="affinitySwitch" destination="wwI-hh-0q0" id="53h-VD-KoV"/>
@@ -108,4 +148,7 @@
             <point key="canvasLocation" x="264" y="985"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="tvtitlescreen" width="1920" height="1080"/>
+    </resources>
 </document>
