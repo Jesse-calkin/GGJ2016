@@ -17,4 +17,15 @@ struct RoundResult {
     
     var currentRound: Int
     var nextRound: Int?
+    
+    init () {
+        bodyValue = 0
+        headValue = 0
+        leftArmValue = 0
+        legsValue = 0
+        rightArmValue = 0
+        
+        currentRound = 0
+        nextRound = nil
+    }
 }

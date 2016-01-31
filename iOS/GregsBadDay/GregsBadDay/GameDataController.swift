@@ -75,24 +75,17 @@ class GameDataController: NSObject {
         
         if let dictionary = roundResultDictionaryForData(data) {
             
-            let bodyValue:Int = dictionary["body_score"] as! Int
-            let headValue:Int = dictionary["head_score"] as! Int
-            let leftArmValue:Int = dictionary["arms_score"] as! Int
-            let legsValue:Int = dictionary["legs_score"] as! Int
-            let rightArmValue:Int = dictionary["arms_score"] as! Int
+            var roundResult = RoundResult()
             
-            let currentRound:Int = dictionary["current_level"] as! Int
-            let nextRound:Int = dictionary["next_level"] as! Int
+            roundResult.bodyValue = dictionary["body_score"] as! Int
+            roundResult.headValue = dictionary["head_score"] as! Int
+            roundResult.leftArmValue = dictionary["arms_score"] as! Int
+            roundResult.legsValue = dictionary["legs_score"] as! Int
+            roundResult.rightArmValue = dictionary["arms_score"] as! Int
             
-            let roundResult:RoundResult = RoundResult(
-                bodyValue:bodyValue,
-                headValue: headValue,
-                leftArmValue: leftArmValue,
-                legsValue: legsValue,
-                rightArmValue: rightArmValue,
-                currentRound: currentRound,
-                nextRound: nextRound
-            )
+            roundResult.currentRound = dictionary["current_level"] as! Int
+            roundResult.nextRound = dictionary["next_level"] as! Int
+            
             return roundResult
         }
         else {
