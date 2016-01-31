@@ -35,13 +35,13 @@ class GregsDayScene: SKScene {
         loadWalkCycle(.Happy)
         loadWalkCycle(.Sad)
         
-        defaultStandingFrame = walkingFrames[.Normal]![0]
+        defaultStandingFrame = walkingFrames[.Happy]![0]
         greg = SKSpriteNode(texture: defaultStandingFrame)
         
         addChild(greg)
-        greg.position = CGPoint(x: CGRectGetMidX(self.frame), y: 100)
+        greg.position = CGPoint(x: CGRectGetMidX(self.frame), y: 300)
         
-        gregWalkWithType(.Normal)
+        gregWalkWithType(.Happy)
         
         let background = SKSpriteNode(imageNamed: "kitchenbg")
         background.size = frame.size
@@ -68,6 +68,7 @@ class GregsDayScene: SKScene {
     func setNewWalkType(type: GregWalkType) {
         greg.removeAllActions()
         
+        // TODO take out this flip thing probably
         let wait = SKAction.waitForDuration(1)
         let flip = SKAction.rotateByAngle(CGFloat(M_PI * 2), duration: 0.25)
         let moveAgain = SKAction.runBlock { () -> Void in
