@@ -15,6 +15,9 @@ enum GregWalkType {
     case Sad
     
     case Count
+    
+    case Zapp
+    
     static let allValues = [Normal, Moonwalk, Happy, Sad, Count]
 }
 
@@ -34,6 +37,7 @@ class GregsDayScene: SKScene {
         loadWalkCycle(.Moonwalk)
         loadWalkCycle(.Happy)
         loadWalkCycle(.Sad)
+        loadWalkCycle(.Zapp)
         
         defaultStandingFrame = walkingFrames[.Happy]![0]
         greg = SKSpriteNode(texture: defaultStandingFrame)
@@ -73,12 +77,12 @@ class GregsDayScene: SKScene {
         
         // TODO take out this flip thing probably
         let wait = SKAction.waitForDuration(1)
-        let flip = SKAction.rotateByAngle(CGFloat(M_PI * 2), duration: 0.25)
+        let zapp = SKAction.animateWithTextures(walkingFrames[.Zapp]!, timePerFrame: 0.1, resize: false, restore: true)
         let moveAgain = SKAction.runBlock { () -> Void in
             self.gregWalkWithType(type)
         }
         
-        let sequence = SKAction.sequence([wait, flip, moveAgain])
+        let sequence = SKAction.sequence([wait, zapp, moveAgain])
         
         greg.runAction(sequence, withKey: "new walk")
     }
@@ -137,6 +141,12 @@ class GregsDayScene: SKScene {
             atlas = SKTextureAtlas(named: "SadWalkCycle")
             imageName = "SadWalkCycle_000%02d.png"
             
+            break
+        case .Zapp:
+            atlas = SKTextureAtlas(named: "Zapp")
+            imageName = "Zapp_000%02d.png"
+            
+            break
         default:
             return
         }
