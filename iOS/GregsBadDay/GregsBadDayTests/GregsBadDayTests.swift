@@ -34,18 +34,19 @@ class GregsBadDayTests: XCTestCase {
     }
     
     func testGameDataController() {
-        let gameDataController:GameDataController = GameDataController()
         
-        gameDataController.postRequestForTarget("head", value: 16) { (roundResult) -> Void in
-            print("done")
+        let expectation = expectationWithDescription("receiveResponse")
+        
+        let playerAction = PlayerAction()
+        
+        let gameDataController:GameDataController = GameDataController()
+        gameDataController.postRequestForPlayerAction(playerAction) { (roundResult) -> Void in
+            expectation.fulfill()
+            print("success")
         }
         
-        var expectation = expectationWithDescription("heyo")
-
-        waitForExpectationsWithTimeout(50.0) { (error) in
-            if error != nil {
-                
-            }
+        waitForExpectationsWithTimeout(20.0) { (error) -> Void in
+            print("failure")
         }
     }
     
