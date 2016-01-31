@@ -26,7 +26,6 @@
 		AD5242D01C5D245E00D11583 /* GregsBadDayTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD5242CF1C5D245E00D11583 /* GregsBadDayTests.swift */; };
 		ADB912771C5C951400BF747D /* LobbyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADB912761C5C951400BF747D /* LobbyViewController.swift */; };
 		ADDC95911C5D6762009086A2 /* PlayerAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADDC95901C5D6762009086A2 /* PlayerAction.swift */; };
-		ADDC95951C5D6D88009086A2 /* DollViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADDC95941C5D6D88009086A2 /* DollViewController.swift */; };
 		ADDC95971C5D880A009086A2 /* RoundResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADDC95961C5D880A009086A2 /* RoundResult.swift */; };
 /* End PBXBuildFile section */
 
@@ -64,7 +63,6 @@
 		AD5242D11C5D245E00D11583 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		ADB912761C5C951400BF747D /* LobbyViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LobbyViewController.swift; sourceTree = "<group>"; };
 		ADDC95901C5D6762009086A2 /* PlayerAction.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlayerAction.swift; sourceTree = "<group>"; };
-		ADDC95941C5D6D88009086A2 /* DollViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DollViewController.swift; sourceTree = "<group>"; };
 		ADDC95961C5D880A009086A2 /* RoundResult.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoundResult.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -108,7 +106,6 @@
 			isa = PBXGroup;
 			children = (
 				0FC7467E1C5C8B9B003F9A6D /* AppDelegate.swift */,
-				ADDC95941C5D6D88009086A2 /* DollViewController.swift */,
 				AD5242C71C5C9FD700D11583 /* GameDataController.swift */,
 				0FC746821C5C8B9B003F9A6D /* GameViewController.swift */,
 				ADB912761C5C951400BF747D /* LobbyViewController.swift */,
@@ -269,7 +266,6 @@
 				0FC746BD1C5D4798003F9A6D /* GregsDayViewController.swift in Sources */,
 				ADDC95911C5D6762009086A2 /* PlayerAction.swift in Sources */,
 				ADDC95971C5D880A009086A2 /* RoundResult.swift in Sources */,
-				ADDC95951C5D6D88009086A2 /* DollViewController.swift in Sources */,
 				8816BF311C5D7528009AC8BB /* CardScene.swift in Sources */,
 				0FC746C21C5D48E3003F9A6D /* GregsDayScene.swift in Sources */,
 				8816BF321C5D7528009AC8BB /* CardViewController.swift in Sources */,
