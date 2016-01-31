@@ -16,7 +16,9 @@
 		0FC746BD1C5D4798003F9A6D /* GregsDayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FC746BC1C5D4798003F9A6D /* GregsDayViewController.swift */; };
 		0FC746BF1C5D4864003F9A6D /* GregsDayScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 0FC746BE1C5D4864003F9A6D /* GregsDayScene.sks */; };
 		0FC746C21C5D48E3003F9A6D /* GregsDayScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FC746C11C5D48E3003F9A6D /* GregsDayScene.swift */; };
-		0FC746C41C5D4B52003F9A6D /* ShittyWalkCycle.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 0FC746C31C5D4B52003F9A6D /* ShittyWalkCycle.atlas */; };
+		0FC746C81C5DC3BB003F9A6D /* HappyWalkCycle.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 0FC746C51C5DC3BB003F9A6D /* HappyWalkCycle.atlas */; };
+		0FC746C91C5DC3BB003F9A6D /* RegularWalkCycle.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 0FC746C61C5DC3BB003F9A6D /* RegularWalkCycle.atlas */; };
+		0FC746CA1C5DC3BB003F9A6D /* SadWalkCycle.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 0FC746C71C5DC3BB003F9A6D /* SadWalkCycle.atlas */; };
 		8816BF2E1C5D7528009AC8BB /* CardScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 8816BF291C5D7528009AC8BB /* CardScene.sks */; };
 		8816BF2F1C5D7528009AC8BB /* Trail.sks in Resources */ = {isa = PBXBuildFile; fileRef = 8816BF2A1C5D7528009AC8BB /* Trail.sks */; };
 		8816BF301C5D7528009AC8BB /* spark.png in Resources */ = {isa = PBXBuildFile; fileRef = 8816BF2B1C5D7528009AC8BB /* spark.png */; };
@@ -51,7 +53,9 @@
 		0FC746BC1C5D4798003F9A6D /* GregsDayViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GregsDayViewController.swift; sourceTree = "<group>"; };
 		0FC746BE1C5D4864003F9A6D /* GregsDayScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = GregsDayScene.sks; sourceTree = "<group>"; };
 		0FC746C11C5D48E3003F9A6D /* GregsDayScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GregsDayScene.swift; sourceTree = "<group>"; };
-		0FC746C31C5D4B52003F9A6D /* ShittyWalkCycle.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = ShittyWalkCycle.atlas; sourceTree = "<group>"; };
+		0FC746C51C5DC3BB003F9A6D /* HappyWalkCycle.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = HappyWalkCycle.atlas; sourceTree = "<group>"; };
+		0FC746C61C5DC3BB003F9A6D /* RegularWalkCycle.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = RegularWalkCycle.atlas; sourceTree = "<group>"; };
+		0FC746C71C5DC3BB003F9A6D /* SadWalkCycle.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = SadWalkCycle.atlas; sourceTree = "<group>"; };
 		8816BF291C5D7528009AC8BB /* CardScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = CardScene.sks; sourceTree = "<group>"; };
 		8816BF2A1C5D7528009AC8BB /* Trail.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Trail.sks; sourceTree = "<group>"; };
 		8816BF2B1C5D7528009AC8BB /* spark.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = spark.png; sourceTree = "<group>"; };
@@ -117,7 +121,7 @@
 				0FC746841C5C8B9B003F9A6D /* Main.storyboard */,
 				0FC746801C5C8B9B003F9A6D /* art.scnassets */,
 				0FC746871C5C8B9B003F9A6D /* Assets.xcassets */,
-				0FC746C31C5D4B52003F9A6D /* ShittyWalkCycle.atlas */,
+				0FC746CB1C5DC3C6003F9A6D /* Walk Cycles */,
 				0FC7468C1C5C8B9B003F9A6D /* Info.plist */,
 			);
 			path = GregsBadDay;
@@ -131,6 +135,16 @@
 				0FC746BE1C5D4864003F9A6D /* GregsDayScene.sks */,
 			);
 			name = "Gregs Day";
+			sourceTree = "<group>";
+		};
+		0FC746CB1C5DC3C6003F9A6D /* Walk Cycles */ = {
+			isa = PBXGroup;
+			children = (
+				0FC746C51C5DC3BB003F9A6D /* HappyWalkCycle.atlas */,
+				0FC746C61C5DC3BB003F9A6D /* RegularWalkCycle.atlas */,
+				0FC746C71C5DC3BB003F9A6D /* SadWalkCycle.atlas */,
+			);
+			name = "Walk Cycles";
 			sourceTree = "<group>";
 		};
 		8816BF281C5D7271009AC8BB /* Card Scene */ = {
@@ -234,13 +248,15 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0FC746C81C5DC3BB003F9A6D /* HappyWalkCycle.atlas in Resources */,
 				0FC746BF1C5D4864003F9A6D /* GregsDayScene.sks in Resources */,
 				8816BF301C5D7528009AC8BB /* spark.png in Resources */,
 				0FC746811C5C8B9B003F9A6D /* art.scnassets in Resources */,
+				0FC746C91C5DC3BB003F9A6D /* RegularWalkCycle.atlas in Resources */,
 				0FC7468B1C5C8B9B003F9A6D /* LaunchScreen.storyboard in Resources */,
 				0FC746881C5C8B9B003F9A6D /* Assets.xcassets in Resources */,
 				8816BF2F1C5D7528009AC8BB /* Trail.sks in Resources */,
-				0FC746C41C5D4B52003F9A6D /* ShittyWalkCycle.atlas in Resources */,
+				0FC746CA1C5DC3BB003F9A6D /* SadWalkCycle.atlas in Resources */,
 				0FC746861C5C8B9B003F9A6D /* Main.storyboard in Resources */,
 				8816BF2E1C5D7528009AC8BB /* CardScene.sks in Resources */,
 			);

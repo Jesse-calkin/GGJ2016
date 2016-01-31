@@ -72,16 +72,15 @@ class GameViewController: UIViewController {
     func setupRoundWithLength(length: NSTimeInterval) {
         isRoundActive = true
         roundTimer = NSTimer.scheduledTimerWithTimeInterval(length, target: self, selector: "roundOver", userInfo: nil, repeats: false)
-        //roundTimer.fire()
     }
     
     func roundOver() {
         isRoundActive = false
         
         if (playerActions.count > 0) {
-            gameDataController.postRequestForPlayerAction(playerActions[0]) { () -> Void in
+            gameDataController.postRequestForPlayerAction(playerActions[0], completionHandler: { (roundResult) -> Void in
                 self.setupRoundWithLength(self.roundLength)
-            }
+            })
         }
         else {
           self.setupRoundWithLength(roundLength)
