@@ -12,9 +12,25 @@ import SceneKit
 
 class GameViewController: UIViewController {
 
+    var pinNode = SCNNode()
+    
+    let gameDataController = GameDataController()
+
+    var roundTimer = NSTimer()
+    var isRoundActive = true
+    var playerActions = [PlayerAction]()
+    let roundLength:NSTimeInterval = 20
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        setupScene()
+        
+        setupRoundWithLength(roundLength)
+    }
+    
+    func setupScene() {
         // create a new scene
         let scene = SCNScene(named: "art.scnassets/VoodooTemplate.dae")!
         
@@ -34,15 +50,8 @@ class GameViewController: UIViewController {
         
         // retrieve the SCNView
         let scnView = self.view as! SCNView
-        
         // set the scene to the view
         scnView.scene = scene
-        
-        // allows the user to manipulate the camera
-        //scnView.allowsCameraControl = true
-        
-        // show statistics such as fps and timing information
-        //scnView.showsStatistics = true
         
         // configure the view
         scnView.backgroundColor = UIColor.blackColor()
@@ -50,6 +59,37 @@ class GameViewController: UIViewController {
         // add a tap gesture recognizer
         let tapGesture = UITapGestureRecognizer(target: self, action: "handleTap:")
         scnView.addGestureRecognizer(tapGesture)
+        
+        for node in scene.rootNode.childNodes {
+            if node.name == "Pin" {
+                pinNode = node
+                
+                break
+            }
+        }
+    }
+    
+    func setupRoundWithLength(length: NSTimeInterval) {
+        isRoundActive = true
+        roundTimer = NSTimer.scheduledTimerWithTimeInterval(length, target: self, selector: "roundOver", userInfo: nil, repeats: false)
+        //roundTimer.fire()
+    }
+    
+    func roundOver() {
+        isRoundActive = false
+        
+        if (playerActions.count > 0) {
+            gameDataController.postRequestForPlayerAction(playerActions[0]) { () -> Void in
+                self.setupRoundWithLength(self.roundLength)
+            }
+        }
+        else {
+          self.setupRoundWithLength(roundLength)
+        }
+        
+        playerActions.removeAll()
+        
+        animatePinsBack()
     }
     
     func handleTap(gestureRecognize: UIGestureRecognizer) {
@@ -64,27 +104,118 @@ class GameViewController: UIViewController {
             // retrieved the first clicked object
             let result: AnyObject! = hitResults[0]
             
-            // get its material
-            let material = result.node!.geometry!.firstMaterial!
-            
-            // highlight it
+            if (result.node.name != "Pin") {
+                // TODO Check which part of the doll got stabbed
+                if (result.node.name == "Doll") {
+                    let action = PlayerAction(target: .Head, value: 1)
+                    
+                    playerActions.append(action)
+                }
+                
+                let pin = pinNode.copy() as! SCNNode
+                scnView.scene?.rootNode.addChildNode(pin)
+                
+                animatePinToCoordinates(pin, coordinates: result.worldCoordinates)
+            }
+        }
+    }
+    
+    func animatePinToCoordinates(pin: SCNNode, coordinates: SCNVector3) {
+        SCNTransaction.begin()
+        SCNTransaction.setAnimationDuration(1.5)
+        SCNTransaction.setAnimationTimingFunction(CAMediaTimingFunction(name: kCAMediaTimingFunctionEaseInEaseOut))
+        
+        let x = Float(arc4random_uniform(40)) - 20
+        let y = Float(arc4random_uniform(400)) + 1500
+        let z = Float(arc4random_uniform(40)) - 20
+        
+        pin.position = SCNVector3(x: x, y: y, z: z)
+        
+        let originalRotation = pin.rotation
+        
+        let x2 = Float(arc4random_uniform(10)) - 5
+        let y2 = Float(arc4random_uniform(10)) - 5
+        let z2 = Float(arc4random_uniform(10)) - 5
+        
+        pin.rotation = SCNVector4(x2, y2, z2, pin.rotation.w)
+        
+        SCNTransaction.setCompletionBlock {
             SCNTransaction.begin()
-            SCNTransaction.setAnimationDuration(0.5)
+            SCNTransaction.setAnimationDuration(1)
+            SCNTransaction.setAnimationTimingFunction(CAMediaTimingFunction(name: kCAMediaTimingFunctionEaseOut))
             
-            // on completion - unhighlight
+            let x3 = Float(arc4random_uniform(1)) - originalRotation.x/2
+            let y3 = Float(arc4random_uniform(1)) - originalRotation.y/2
+            let z3 = Float(arc4random_uniform(1)) - originalRotation.z/2
+            
+            pin.rotation = SCNVector4(x3, y3, z3, pin.rotation.w)
+            
             SCNTransaction.setCompletionBlock {
                 SCNTransaction.begin()
-                SCNTransaction.setAnimationDuration(0.5)
+                SCNTransaction.setAnimationDuration(0.2)
+                SCNTransaction.setAnimationTimingFunction(CAMediaTimingFunction(name: kCAMediaTimingFunctionEaseOut))
                 
-                material.emission.contents = UIColor.blackColor()
+                pin.position = coordinates
                 
                 SCNTransaction.commit()
             }
             
-            material.emission.contents = UIColor.redColor()
-            
             SCNTransaction.commit()
         }
+        
+        SCNTransaction.commit()
+    }
+    
+    func animatePinsBack() {
+        var pins = [SCNNode]()
+        
+        let scnView = self.view as! SCNView
+        let scene = scnView.scene!
+        
+        for node in scene.rootNode.childNodes {
+            if node.name == "Pin" {
+                pins.append(node)
+            }
+        }
+        
+        let originalPinPosition = pinNode.position
+        
+        SCNTransaction.begin()
+        SCNTransaction.setAnimationDuration(2)
+        SCNTransaction.setAnimationTimingFunction(CAMediaTimingFunction(name: kCAMediaTimingFunctionEaseOut))
+        
+        for pin in pins {
+            let y = Float(arc4random_uniform(400)) + 200
+            
+            pin.position = SCNVector3(x: pin.position.x, y: y, z: pin.position.z)
+        }
+        
+        SCNTransaction.setCompletionBlock {
+            SCNTransaction.begin()
+            SCNTransaction.setAnimationDuration(1)
+            SCNTransaction.setAnimationTimingFunction(CAMediaTimingFunction(name: kCAMediaTimingFunctionEaseOut))
+            
+            for pin in pins {
+                pin.position =  SCNVector3(x: originalPinPosition.x, y: pin.position.y, z: originalPinPosition.z)
+            }
+            
+            SCNTransaction.setCompletionBlock {
+                SCNTransaction.begin()
+                SCNTransaction.setAnimationDuration(1)
+                SCNTransaction.setAnimationTimingFunction(CAMediaTimingFunction(name: kCAMediaTimingFunctionEaseOut))
+                
+                for pin in pins {
+                    pin.position = originalPinPosition
+                }
+                
+                SCNTransaction.commit()
+            }
+                
+            SCNTransaction.commit()
+        }
+        
+        SCNTransaction.commit()
+        
     }
     
     override func shouldAutorotate() -> Bool {
@@ -96,11 +227,7 @@ class GameViewController: UIViewController {
     }
     
     override func supportedInterfaceOrientations() -> UIInterfaceOrientationMask {
-        if UIDevice.currentDevice().userInterfaceIdiom == .Phone {
-            return .AllButUpsideDown
-        } else {
-            return .All
-        }
+        return .Portrait
     }
     
     override func didReceiveMemoryWarning() {
