@@ -11,44 +11,88 @@ import Foundation
 class GameDataController: NSObject {
     var roundResult: RoundResult?
     
-    var session: NSURLSession?
-    
-    func postRequestForPlayerAction(playerAction:PlayerAction, completionHandler:(roundResult:RoundResult)->Void) {
-        postRequestForTarget(playerAction.target.rawValue, value:playerAction.value, completionHandler:completionHandler)
-    }
-    
-    func postRequestForTarget(target:String, value:Int, completionHandler:(roundResult:RoundResult)->Void) {
-        let urlString = "https://voodoo.madsciencesoftware.com"
-        let url = NSURL(string: urlString)!
+    func postRequestForPlayerAction(playerAction:PlayerAction, completionHandler:(roundResult:RoundResult)-> Void) {
+        
+        let request = requestForPlayerAction(playerAction)
         let session = NSURLSession.sharedSession()
-        
-        let body = ["target":target, "value":value]
-        
-        var bodyData: NSData?
-        
-        do {
-            bodyData = try NSJSONSerialization.dataWithJSONObject(body, options: NSJSONWritingOptions.PrettyPrinted)
-        }
-        catch {
-            
-        }
-        
-        let request = NSMutableURLRequest(URL: url)
-        request.HTTPMethod = "POST"
-        request.HTTPBody = bodyData
         let task = session.dataTaskWithRequest(request) { (data, response, error) -> Void in
-            do {
-                let dictionary = try NSJSONSerialization.JSONObjectWithData(data!, options:[]) as! [String: AnyObject]
-                let currentRound = dictionary["current_level"] as! Int
-                let nextRound = dictionary["next_level"] as! Int
-                let score = dictionary["body_score"] as! Int
-                let roundResult = RoundResult(currentRound:currentRound, nextRound:nextRound, score:score)
-                completionHandler(roundResult:roundResult)
-            } catch {
-                
-            }
+            let roundResult = self.roundResultForData(data!)
+            self.roundResult = roundResult
+            completionHandler(roundResult: roundResult!)
         }
         task.resume()
+    }
+    
+    func bodyDataForPlayerAction(playerAction:PlayerAction)-> NSData? {
+
+        do {
+            let bodyDictionary = bodyDictionaryForPlayerAction(playerAction)
+            let bodyData = try NSJSONSerialization.dataWithJSONObject(bodyDictionary, options:[])
+            return bodyData
+        }
+        catch {
+            return nil
+        }
+    }
+    
+    func bodyDictionaryForPlayerAction(playerAction:PlayerAction)-> [String: AnyObject] {
+    
+        let bodyDictionary = ["armsValue": playerAction.armsValue,
+                              "bodyValue": playerAction.bodyValue,
+                              "headValue": playerAction.headValue,
+                              "legsValue": playerAction.legsValue]
+        return bodyDictionary
+    }
+    
+    func requestForPlayerAction(playerAction:PlayerAction)-> NSURLRequest {
+        
+        let request = NSMutableURLRequest()
+        
+        request.HTTPMethod = "POST"
+        
+        let urlString = "https://voodoo.madsciencesoftware.com"
+        let url = NSURL(string: urlString)!
+        request.URL = url
+        
+        let body = bodyDataForPlayerAction(playerAction)
+        request.HTTPBody = body
+        
+        return request
+    }
+    
+    func roundResultDictionaryForData(data:NSData)-> [String: AnyObject]? {
+        do {
+            let dictionary = try NSJSONSerialization.JSONObjectWithData(data, options:[]) as! [String: AnyObject]
+            return dictionary
+        }
+        catch {
+            return nil
+        }
+    }
+    
+    func roundResultForData(data:NSData)-> RoundResult? {
+        
+        if let dictionary = roundResultDictionaryForData(data) {
+            
+            let currentRound:Int = dictionary["current_level"] as! Int
+            let armsValue:Int = dictionary["arms_score"] as! Int
+            let bodyValue:Int = dictionary["body_score"] as! Int
+            let headValue:Int = dictionary["head_score"] as! Int
+            let legsValue:Int = dictionary["legs_score"] as! Int
+            
+            let nextRound:Int = dictionary["next_level"] as! Int
+            
+            let roundResult:RoundResult = RoundResult(currentRound: currentRound,
+                                                         armsValue: armsValue,
+                                                         bodyValue: bodyValue,
+                                                         headValue: headValue,
+                                                         legsValue: legsValue,
+                                                         nextRound: nextRound)
+            return roundResult
+        }
+        else {
+            return nil
+        }
     }
     
 }

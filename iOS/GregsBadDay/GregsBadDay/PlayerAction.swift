@@ -9,13 +9,8 @@
 import Foundation
 
 struct PlayerAction {
-    enum Target: String {
-        case Arms = "arms"
-        case Body = "body"
-        case Head = "head"
-        case Legs = "legs"
-    }
-    
-    var target: Target
-    var value: Int
+    var armsValue: Int
+    var bodyValue: Int
+    var headValue: Int
+    var legsValue: Int
 }
