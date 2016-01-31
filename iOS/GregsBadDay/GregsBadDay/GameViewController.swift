@@ -15,11 +15,12 @@ class GameViewController: UIViewController {
     var pinNode = SCNNode()
 
     var roundTimer = NSTimer()
-    var isRoundActive = false
     var playerAction = PlayerAction()
     let roundLength:NSTimeInterval = 20
     
+    var isRoundActive = false
     var canPoke = false;
+    var shouldStartNewRound = true
     
     
     override func viewDidLoad() {
@@ -60,7 +61,7 @@ class GameViewController: UIViewController {
     }
     
     func setupRoundWithLength(length: NSTimeInterval) {
-        if (!isRoundActive) {
+        if (!isRoundActive && shouldStartNewRound) {
             isRoundActive = true
             roundTimer = NSTimer.scheduledTimerWithTimeInterval(length, target: self, selector: "roundOver", userInfo: nil, repeats: false)
             
@@ -78,9 +79,16 @@ class GameViewController: UIViewController {
     }
     
     func roundOver() {
+        canPoke = false
         isRoundActive = false
+        shouldStartNewRound = false
+        
+        if (self.presentedViewController != nil) {
+            dismissViewControllerAnimated(true, completion: nil)
+        }
         
         sharedGameDataController().postRequestForPlayerAction(playerAction, completionHandler: { (roundResult) -> Void in
+            self.shouldStartNewRound = true
             self.playerAction = PlayerAction()
             self.animatePinsBack()
         })
