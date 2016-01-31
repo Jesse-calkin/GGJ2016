@@ -20,11 +20,17 @@ class CardScene: SKScene {
     var complete = false {
         didSet {
             print("🍻 COMPLETE! 🎉")
-            cardDelegate?.didComplete()
+            magic?.particleSpeed = 1000
+            magic?.particleBirthRate = 1000
+                    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, Int64(1 * Float(NSEC_PER_SEC))), dispatch_get_main_queue()) {
+                        self.cardDelegate?.didComplete()
+        }
+
         }
     }
 
     var trail: SKEmitterNode?
+    var magic: SKEmitterNode?
     var card: SKSpriteNode?
     var hitboxes = [SKNode]()
 
@@ -36,6 +42,10 @@ class CardScene: SKScene {
         }
 
         card = childNodeWithName("Card") as? SKSpriteNode
+        magic = childNodeWithName("magic") as? SKEmitterNode
+        if let magic = magic {
+            magic.particleColor = UIColor.redColor()
+        }
 
         self.enumerateChildNodesWithName("hitbox") { node, stop in
             if let node = node as? SKShapeNode {
@@ -48,9 +58,13 @@ class CardScene: SKScene {
         }
         print("\(hitboxes.count) hitboxes found")
     }
-    
+
+    override func willMoveFromView(view: SKView) {
+        cardDelegate = nil
+    }
+
     override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
-       /* Called when a touch begins */
+        trail?.particleBirthRate = 52
         
         for touch in touches {
             let point = touch.locationInNode(self)
@@ -69,7 +83,7 @@ class CardScene: SKScene {
     }
 
     override func touchesEnded(touches: Set<UITouch>, withEvent event: UIEvent?) {
-//        trail?.removeFromParent()// This will freeze the particles
+        trail?.particleBirthRate = 0
     }
 
     override func update(currentTime: CFTimeInterval) {
