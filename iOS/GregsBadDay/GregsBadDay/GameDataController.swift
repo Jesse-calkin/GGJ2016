@@ -84,7 +84,7 @@ class GameDataController: NSObject {
             roundResult.rightArmValue = dictionary["arms_score"] as! Int
             
             roundResult.currentRound = dictionary["current_level"] as! Int
-            roundResult.nextRound = dictionary["next_level"] as! Int
+            roundResult.nextRound = dictionary["next_level"] as? Int
             
             return roundResult
         }
