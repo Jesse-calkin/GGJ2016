@@ -54,7 +54,7 @@ class GameViewController: UIViewController {
         scnView.addGestureRecognizer(tapGesture)
         
         for node in scene.rootNode.childNodes {
-            if let name = node.name where name.hasPrefix("Pin") {
+            if let name = node.name where name.hasPrefix("Pin") && name != "PinCushion" {
                 pins.append(node)
                 initialPinPositions.append(node.position)
                 initialPinRotations.append(node.rotation)
@@ -153,11 +153,9 @@ class GameViewController: UIViewController {
         
         pin.position = SCNVector3(x: x, y: y, z: z)
         
-        let originalRotation = pin.rotation
-        
-        let x2 = Float(arc4random_uniform(10)) - 5
-        let y2 = Float(arc4random_uniform(10)) - 5
-        let z2 = Float(arc4random_uniform(10)) - 5
+        let x2 = (Float(arc4random_uniform(10)) - 5) / 10
+        let y2 = (Float(arc4random_uniform(10)) - 5) / 10
+        let z2 = (Float(arc4random_uniform(10)) - 5) / 10
         
         pin.rotation = SCNVector4(x2, y2, z2, pin.rotation.w)
         
@@ -166,11 +164,9 @@ class GameViewController: UIViewController {
             SCNTransaction.setAnimationDuration(0.75)
             SCNTransaction.setAnimationTimingFunction(CAMediaTimingFunction(name: kCAMediaTimingFunctionEaseOut))
             
-            let x3 = Float(arc4random_uniform(1)) - originalRotation.x/2
-            let y3 = Float(arc4random_uniform(1)) - originalRotation.y/2
-            let z3 = Float(arc4random_uniform(1)) - originalRotation.z/2
+            let originalRotation = self.initialPinRotations[self.currentPinNumber - 1];
             
-            pin.rotation = SCNVector4(x3, y3, z3, pin.rotation.w)
+            pin.rotation = originalRotation
             
             SCNTransaction.setCompletionBlock {
                 SCNTransaction.begin()
@@ -197,7 +193,8 @@ class GameViewController: UIViewController {
         SCNTransaction.setAnimationDuration(2)
         SCNTransaction.setAnimationTimingFunction(CAMediaTimingFunction(name: kCAMediaTimingFunctionEaseOut))
         
-        for pin in pins {
+        for var i = 0; i < self.currentPinNumber; i++ {
+            let pin = self.pins[i];
             let y = Float(arc4random_uniform(400)) + 200
             
             pin.position = SCNVector3(x: pin.position.x, y: y, z: pin.position.z)
@@ -208,7 +205,7 @@ class GameViewController: UIViewController {
             SCNTransaction.setAnimationDuration(1)
             SCNTransaction.setAnimationTimingFunction(CAMediaTimingFunction(name: kCAMediaTimingFunctionEaseOut))
             
-            for var i = 0; i < self.pins.count; i++ {
+            for var i = 0; i < self.currentPinNumber; i++ {
                 let pin = self.pins[i];
                 let originalPinPosition = self.initialPinPositions[i];
                 let originalPinRotation = self.initialPinRotations[i];
@@ -226,7 +223,7 @@ class GameViewController: UIViewController {
                     self.setupRoundWithLength(self.roundLength)
                 })
                 
-                for var i = 0; i < self.pins.count; i++ {
+                for var i = 0; i < self.currentPinNumber; i++ {
                     let pin = self.pins[i];
                     let originalPinPosition = self.initialPinPositions[i];
                     
