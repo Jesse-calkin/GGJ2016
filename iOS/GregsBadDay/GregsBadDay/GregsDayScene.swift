@@ -49,6 +49,8 @@ class GregsDayScene: SKScene {
         background.position = CGPoint(x: CGRectGetMidX(self.frame), y: CGRectGetMidY(self.frame))
         background.zPosition = -1
         self.addChild(background)
+
+        startListeningForRoundResults()
     }
     
     override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
@@ -199,7 +201,13 @@ class GregsDayScene: SKScene {
     }
     
     func roundResultReceived(roundResult:RoundResult) {
-        //  Do animation stuff here.
+        if roundResult.evilWins() {
+            print("👹 Evil WINS! 👹")
+            setNewWalkType(.Sad)
+        } else {
+            print("👼 Good WINS! 👼")
+            setNewWalkType(.Happy)
+        }
     }
     
 }

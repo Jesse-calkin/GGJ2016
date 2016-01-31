@@ -30,4 +30,12 @@ struct RoundResult {
         currentRound = 0
         nextRound = nil
     }
+
+    func grandTotal() -> Int {
+        return bodyValue + headValue + leftArmValue + leftLegValue + rightArmValue + rightLegValue
+    }
+
+    func evilWins() -> Bool {
+        return grandTotal() > 0
+    }
 }
