@@ -13,8 +13,6 @@ import SceneKit
 class GameViewController: UIViewController {
 
     var pinNode = SCNNode()
-    
-    let gameDataController = GameDataController()
 
     var roundTimer = NSTimer()
     var isRoundActive = false
@@ -77,11 +75,7 @@ class GameViewController: UIViewController {
     func roundOver() {
         isRoundActive = false
         
-        if (self.presentedViewController != nil) {
-            dismissViewControllerAnimated(true, completion: nil)
-        }
-        
-        gameDataController.postRequestForPlayerAction(playerAction, completionHandler: { (roundResult) -> Void in
+        sharedGameDataController().postRequestForPlayerAction(playerAction, completionHandler: { (roundResult) -> Void in
             self.playerAction = PlayerAction()
             self.animatePinsBack()
         })

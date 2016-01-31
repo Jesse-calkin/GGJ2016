@@ -7,9 +7,24 @@
 //
 
 import Foundation
+import UIKit
+
+func sharedGameDataController()-> GameDataController {
+    let appDelegate:AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+    let sharedGameDataController:GameDataController = appDelegate.gameDataController
+    return sharedGameDataController
+}
 
 class GameDataController: NSObject {
+    var affinity:Affinity
     var roundResult: RoundResult?
+    
+    override init() {
+        
+        self.affinity = .Bad
+        
+        super.init()
+    }
     
     func postRequestForPlayerAction(playerAction:PlayerAction, completionHandler:(roundResult:RoundResult?)-> Void) {
         
@@ -66,6 +81,7 @@ class GameDataController: NSObject {
     }
     
     func roundResultDictionaryForData(data:NSData)-> [String: AnyObject] {
+        
         let dictionary = try! NSJSONSerialization.JSONObjectWithData(data, options:[]) as! [String: AnyObject]
         return dictionary
     }

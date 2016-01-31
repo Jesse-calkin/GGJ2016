@@ -29,6 +29,7 @@
 		AD5242C81C5C9FD700D11583 /* GameDataController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD5242C71C5C9FD700D11583 /* GameDataController.swift */; };
 		AD5242D01C5D245E00D11583 /* GregsBadDayTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD5242CF1C5D245E00D11583 /* GregsBadDayTests.swift */; };
 		ADB912771C5C951400BF747D /* LobbyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADB912761C5C951400BF747D /* LobbyViewController.swift */; };
+		ADCAB5BA1C5E79D8008E9535 /* Affinity.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADCAB5B91C5E79D8008E9535 /* Affinity.swift */; };
 		ADDC95911C5D6762009086A2 /* PlayerAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADDC95901C5D6762009086A2 /* PlayerAction.swift */; };
 		ADDC95971C5D880A009086A2 /* RoundResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADDC95961C5D880A009086A2 /* RoundResult.swift */; };
 /* End PBXBuildFile section */
@@ -70,6 +71,7 @@
 		AD5242CF1C5D245E00D11583 /* GregsBadDayTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GregsBadDayTests.swift; sourceTree = "<group>"; };
 		AD5242D11C5D245E00D11583 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		ADB912761C5C951400BF747D /* LobbyViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LobbyViewController.swift; sourceTree = "<group>"; };
+		ADCAB5B91C5E79D8008E9535 /* Affinity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Affinity.swift; sourceTree = "<group>"; };
 		ADDC95901C5D6762009086A2 /* PlayerAction.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlayerAction.swift; sourceTree = "<group>"; };
 		ADDC95961C5D880A009086A2 /* RoundResult.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoundResult.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -113,6 +115,7 @@
 		0FC7467D1C5C8B9B003F9A6D /* GregsBadDay */ = {
 			isa = PBXGroup;
 			children = (
+				ADCAB5B91C5E79D8008E9535 /* Affinity.swift */,
 				0FC7467E1C5C8B9B003F9A6D /* AppDelegate.swift */,
 				AD5242C71C5C9FD700D11583 /* GameDataController.swift */,
 				0FC746821C5C8B9B003F9A6D /* GameViewController.swift */,
@@ -286,6 +289,7 @@
 			files = (
 				ADB912771C5C951400BF747D /* LobbyViewController.swift in Sources */,
 				0FC746831C5C8B9B003F9A6D /* GameViewController.swift in Sources */,
+				ADCAB5BA1C5E79D8008E9535 /* Affinity.swift in Sources */,
 				0FC7467F1C5C8B9B003F9A6D /* AppDelegate.swift in Sources */,
 				0FC746BD1C5D4798003F9A6D /* GregsDayViewController.swift in Sources */,
 				ADDC95911C5D6762009086A2 /* PlayerAction.swift in Sources */,

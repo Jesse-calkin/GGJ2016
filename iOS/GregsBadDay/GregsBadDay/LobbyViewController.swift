@@ -11,27 +11,15 @@ import UIKit
 class LobbyViewController: UIViewController {
     
     @IBOutlet weak var startButton: UIButton?
-    
-    @IBOutlet weak var nameTextField: UITextField?
-    @IBOutlet weak var roomTextField: UITextField?
-    @IBOutlet weak var teamTextField: UITextField?
+    @IBOutlet weak var affinitySwitch: UISwitch?
 
-    override func viewDidLoad() {
-        super.viewDidLoad()
+    func affinity()-> Affinity {
+        let affinity:Affinity = (affinitySwitch!.on ? .Good : .Bad)
+        return affinity
     }
     
-    @IBAction func startButtonTapped() {
-        
+    override func viewWillDisappear(animated: Bool) {
+        sharedGameDataController().affinity = affinity()
     }
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
+    
 }
