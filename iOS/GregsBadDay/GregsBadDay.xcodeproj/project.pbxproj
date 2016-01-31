@@ -334,7 +334,6 @@
 				8816BF391C5DDD6C009AC8BB /* Base */,
 			);
 			name = Card.storyboard;
-			path = ../../../../../../Desktop/particleTest/particleTest;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
