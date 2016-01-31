@@ -18,7 +18,7 @@ class GameViewController: UIViewController {
 
     var roundTimer = NSTimer()
     var isRoundActive = true
-    var playerActions = [PlayerAction]()
+    var playerAction = PlayerAction()
     let roundLength:NSTimeInterval = 20
     
     
@@ -77,16 +77,11 @@ class GameViewController: UIViewController {
     func roundOver() {
         isRoundActive = false
         
-        if (playerActions.count > 0) {
-            gameDataController.postRequestForPlayerAction(playerActions[0], completionHandler: { (roundResult) -> Void in
-                self.setupRoundWithLength(self.roundLength)
-            })
-        }
-        else {
-          self.setupRoundWithLength(roundLength)
-        }
+        gameDataController.postRequestForPlayerAction(playerAction, completionHandler: { (roundResult) -> Void in
+            self.setupRoundWithLength(self.roundLength)
+        })
         
-        playerActions.removeAll()
+        playerAction = PlayerAction()
         
         animatePinsBack()
     }
@@ -106,9 +101,7 @@ class GameViewController: UIViewController {
             if (result.node.name != "Pin") {
                 // TODO Check which part of the doll got stabbed
                 if (result.node.name == "Doll") {
-                    let action = PlayerAction(target: .Head, value: 1)
-                    
-                    playerActions.append(action)
+                    playerAction.headValue++
                 }
                 
                 let pin = pinNode.copy() as! SCNNode

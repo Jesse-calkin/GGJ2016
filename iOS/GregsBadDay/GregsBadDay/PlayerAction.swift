@@ -14,4 +14,12 @@ struct PlayerAction {
     var leftArmValue: Int
     var legsValue: Int
     var rightArmValue: Int
+    
+    init() {
+        bodyValue = 0
+        headValue = 0
+        leftArmValue = 0
+        legsValue = 0
+        rightArmValue = 0
+    }
 }
