@@ -39,7 +39,8 @@ class GregsDayScene: SKScene {
         greg = SKSpriteNode(texture: defaultStandingFrame)
         
         addChild(greg)
-        greg.position = CGPoint(x: CGRectGetMidX(self.frame), y: 300)
+        greg.setScale(0.66)
+        greg.position = CGPoint(x: CGRectGetMidX(self.frame), y: 350)
         
         gregWalkWithType(.Happy)
         
@@ -126,8 +127,8 @@ class GregsDayScene: SKScene {
             
             break
         case .Happy:
-            atlas = SKTextureAtlas(named: "HappyWalkCycle")
-            imageName = "HappyWalkCycle_000%02d.png"
+            atlas = SKTextureAtlas(named: "Rich_HappyWalk")
+            imageName = "Rich_HappyWalk_000%02d.png"
             
             break
         case .Sad:
@@ -148,4 +149,57 @@ class GregsDayScene: SKScene {
         
         walkingFrames[type] = frames
     }
+    
+    //  Round results
+    
+    var isListeningForRoundResults:Bool = false
+    
+    func startListeningForRoundResults() {
+        if !isListeningForRoundResults {
+            isListeningForRoundResults = true
+            
+            listenForNextRoundResult()
+        }
+    }
+    
+    func stopListeningForRoundResults() {
+        if isListeningForRoundResults {
+            isListeningForRoundResults = false
+            
+            stopListeningForNextRoundResult()
+        }
+    }
+    
+    var isListeningForNextRoundResult:Bool = false
+    
+    func listenForNextRoundResult() {
+        if !isListeningForNextRoundResult {
+            isListeningForNextRoundResult = true
+            
+            sharedGameDataController().postRequestForPlayerAction(PlayerAction(), completionHandler: { (roundResult) -> Void in
+                if self.isListeningForNextRoundResult {
+                    if let roundResult = roundResult {
+                        self.roundResultReceived(roundResult)
+                    }
+                }
+                
+                self.isListeningForNextRoundResult = false
+                
+                if self.isListeningForRoundResults {
+                    self.listenForNextRoundResult()
+                }
+            })
+        }
+    }
+    
+    func stopListeningForNextRoundResult() {
+        if isListeningForNextRoundResult {
+            isListeningForNextRoundResult = false
+        }
+    }
+    
+    func roundResultReceived(roundResult:RoundResult) {
+        //  Do animation stuff here.
+    }
+    
 }
