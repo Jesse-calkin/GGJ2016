@@ -7,6 +7,13 @@
 //
 
 import Foundation
+import UIKit
+
+func sharedGameDataController()-> GameDataController {
+    let appDelegate:AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+    let sharedGameDataController:GameDataController = appDelegate.gameDataController
+    return sharedGameDataController
+}
 
 class GameDataController: NSObject {
     var affinity:Affinity

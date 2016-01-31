@@ -83,7 +83,7 @@ class GameViewController: UIViewController {
     func roundOver() {
         isRoundActive = false
         
-        gameDataController().postRequestForPlayerAction(playerAction, completionHandler: { (roundResult) -> Void in
+        sharedGameDataController().postRequestForPlayerAction(playerAction, completionHandler: { (roundResult) -> Void in
             self.setupRoundWithLength(self.roundLength)
         })
         
@@ -231,12 +231,6 @@ class GameViewController: UIViewController {
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Release any cached data, images, etc that aren't in use.
-    }
-    
-    func gameDataController()-> GameDataController {
-        let appDelegate:AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
-        let gameDataController:GameDataController = appDelegate.gameDataController
-        return gameDataController
     }
 
 }
