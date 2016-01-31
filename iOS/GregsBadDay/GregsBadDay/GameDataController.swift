@@ -37,12 +37,13 @@ class GameDataController: NSObject {
     
     func bodyDictionaryForPlayerAction(playerAction:PlayerAction)-> [String: AnyObject] {
         
-        let bodyDictionary = ["body": playerAction.bodyValue,
-                              "head": playerAction.headValue,
-                          "leg_left": playerAction.legsValue,
-                          "leg_right": playerAction.legsValue,
-                          "arm_left": playerAction.leftArmValue,
-                         "arm_right": playerAction.rightArmValue]
+        let bodyDictionary = ["arm_left": playerAction.leftArmValue,
+                             "arm_right": playerAction.rightArmValue,
+                                  "body": playerAction.bodyValue,
+                                  "head": playerAction.headValue,
+                              "leg_left": playerAction.legsValue,
+                             "leg_right": playerAction.legsValue,
+        ]
         return bodyDictionary
     }
     
