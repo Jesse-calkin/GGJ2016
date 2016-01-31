@@ -13,8 +13,6 @@ import SceneKit
 class GameViewController: UIViewController {
 
     var pinNode = SCNNode()
-    
-    let gameDataController = GameDataController()
 
     var roundTimer = NSTimer()
     var isRoundActive = true
@@ -85,7 +83,7 @@ class GameViewController: UIViewController {
     func roundOver() {
         isRoundActive = false
         
-        gameDataController.postRequestForPlayerAction(playerAction, completionHandler: { (roundResult) -> Void in
+        gameDataController().postRequestForPlayerAction(playerAction, completionHandler: { (roundResult) -> Void in
             self.setupRoundWithLength(self.roundLength)
         })
         
@@ -233,6 +231,12 @@ class GameViewController: UIViewController {
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Release any cached data, images, etc that aren't in use.
+    }
+    
+    func gameDataController()-> GameDataController {
+        let appDelegate:AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+        let gameDataController:GameDataController = appDelegate.gameDataController
+        return gameDataController
     }
 
 }
