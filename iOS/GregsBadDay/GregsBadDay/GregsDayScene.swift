@@ -149,4 +149,57 @@ class GregsDayScene: SKScene {
         
         walkingFrames[type] = frames
     }
+    
+    //  Round results
+    
+    var isListeningForRoundResults:Bool = false
+    
+    func startListeningForRoundResults() {
+        if !isListeningForRoundResults {
+            isListeningForRoundResults = true
+            
+            listenForNextRoundResult()
+        }
+    }
+    
+    func stopListeningForRoundResults() {
+        if isListeningForRoundResults {
+            isListeningForRoundResults = false
+            
+            stopListeningForNextRoundResult()
+        }
+    }
+    
+    var isListeningForNextRoundResult:Bool = false
+    
+    func listenForNextRoundResult() {
+        if !isListeningForNextRoundResult {
+            isListeningForNextRoundResult = true
+            
+            sharedGameDataController().postRequestForPlayerAction(PlayerAction(), completionHandler: { (roundResult) -> Void in
+                if self.isListeningForNextRoundResult {
+                    if let roundResult = roundResult {
+                        self.roundResultReceived(roundResult)
+                    }
+                }
+                
+                self.isListeningForNextRoundResult = false
+                
+                if self.isListeningForRoundResults {
+                    self.listenForNextRoundResult()
+                }
+            })
+        }
+    }
+    
+    func stopListeningForNextRoundResult() {
+        if isListeningForNextRoundResult {
+            isListeningForNextRoundResult = false
+        }
+    }
+    
+    func roundResultReceived(roundResult:RoundResult) {
+        //  Do animation stuff here.
+    }
+    
 }
