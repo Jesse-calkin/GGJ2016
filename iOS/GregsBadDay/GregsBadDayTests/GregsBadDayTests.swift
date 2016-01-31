@@ -35,14 +35,13 @@ class GregsBadDayTests: XCTestCase {
     
     func testGameDataController() {
         
-        let expectation = expectationWithDescription("receiveResponse")
+        let expectation = expectationWithDescription("success")
         
         let playerAction = PlayerAction()
         
         let gameDataController:GameDataController = GameDataController()
         gameDataController.postRequestForPlayerAction(playerAction) { (roundResult) -> Void in
             expectation.fulfill()
-            print("success")
         }
         
         waitForExpectationsWithTimeout(20.0) { (error) -> Void in
