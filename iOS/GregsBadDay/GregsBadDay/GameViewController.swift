@@ -11,9 +11,11 @@ import QuartzCore
 import SceneKit
 
 class GameViewController: UIViewController {
-
-    var pinNode = SCNNode()
-
+    var pins = [SCNNode]()
+    var currentPinNumber = 0
+    var initialPinPositions = [SCNVector3]()
+    var initialPinRotations  = [SCNVector4]()
+    
     var roundTimer = NSTimer()
     var playerAction = PlayerAction()
     let roundLength:NSTimeInterval = 20
@@ -52,10 +54,10 @@ class GameViewController: UIViewController {
         scnView.addGestureRecognizer(tapGesture)
         
         for node in scene.rootNode.childNodes {
-            if node.name == "Pin" {
-                pinNode = node
-                
-                break
+            if let name = node.name where name.hasPrefix("Pin") {
+                pins.append(node)
+                initialPinPositions.append(node.position)
+                initialPinRotations.append(node.rotation)
             }
         }
     }
@@ -63,6 +65,8 @@ class GameViewController: UIViewController {
     func setupRoundWithLength(length: NSTimeInterval) {
         if (!isRoundActive && shouldStartNewRound) {
             isRoundActive = true
+            currentPinNumber = 0
+            
             roundTimer = NSTimer.scheduledTimerWithTimeInterval(length, target: self, selector: "roundOver", userInfo: nil, repeats: false)
             
             showCard()
@@ -73,7 +77,7 @@ class GameViewController: UIViewController {
     }
     
     func showCard() {
-        if isRoundActive {
+        if isRoundActive && currentPinNumber < 5 {
             self.performSegueWithIdentifier("PresentCardSegue", sender: self)
         }
     }
@@ -102,7 +106,7 @@ class GameViewController: UIViewController {
         let p = gestureRecognize.locationInView(scnView)
         let hitResults = scnView.hitTest(p, options: nil)
         // check that we clicked on at least one object
-        if hitResults.count > 0 && canPoke {
+        if hitResults.count > 0 && canPoke && currentPinNumber < 5 {
             // retrieved the first clicked object
             let result: AnyObject! = hitResults[0]
             
@@ -130,9 +134,9 @@ class GameViewController: UIViewController {
                     }
                 }
                 
-                let pin = pinNode.copy() as! SCNNode
-                scnView.scene?.rootNode.addChildNode(pin)
+                let pin = pins[currentPinNumber]
                 
+                currentPinNumber++
                 animatePinToCoordinates(pin, coordinates: result.worldCoordinates)
             }
         }
@@ -189,19 +193,6 @@ class GameViewController: UIViewController {
     }
     
     func animatePinsBack() {
-        var pins = [SCNNode]()
-        
-        let scnView = self.view as! SCNView
-        let scene = scnView.scene!
-        
-        for node in scene.rootNode.childNodes {
-            if node.name == "Pin" {
-                pins.append(node)
-            }
-        }
-        
-        let originalPinPosition = pinNode.position
-        
         SCNTransaction.begin()
         SCNTransaction.setAnimationDuration(2)
         SCNTransaction.setAnimationTimingFunction(CAMediaTimingFunction(name: kCAMediaTimingFunctionEaseOut))
@@ -217,8 +208,13 @@ class GameViewController: UIViewController {
             SCNTransaction.setAnimationDuration(1)
             SCNTransaction.setAnimationTimingFunction(CAMediaTimingFunction(name: kCAMediaTimingFunctionEaseOut))
             
-            for pin in pins {
-                pin.position =  SCNVector3(x: originalPinPosition.x, y: pin.position.y, z: originalPinPosition.z)
+            for var i = 0; i < self.pins.count; i++ {
+                let pin = self.pins[i];
+                let originalPinPosition = self.initialPinPositions[i];
+                let originalPinRotation = self.initialPinRotations[i];
+                
+                 pin.position =  SCNVector3(x: originalPinPosition.x, y: pin.position.y, z: originalPinPosition.z)
+                pin.rotation = originalPinRotation
             }
             
             SCNTransaction.setCompletionBlock {
@@ -230,8 +226,11 @@ class GameViewController: UIViewController {
                     self.setupRoundWithLength(self.roundLength)
                 })
                 
-                for pin in pins {
-                    pin.position = originalPinPosition
+                for var i = 0; i < self.pins.count; i++ {
+                    let pin = self.pins[i];
+                    let originalPinPosition = self.initialPinPositions[i];
+                    
+                    pin.position =  originalPinPosition
                 }
                 
                 SCNTransaction.commit()
