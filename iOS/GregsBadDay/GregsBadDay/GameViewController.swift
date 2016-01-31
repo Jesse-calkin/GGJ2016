@@ -29,6 +29,14 @@ class GameViewController: UIViewController {
         
         setupRoundWithLength(roundLength)
     }
+
+    override func viewDidAppear(animated: Bool) {
+        super.viewDidAppear(animated)
+
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, Int64(3 * Float(NSEC_PER_SEC))), dispatch_get_main_queue()) {
+            self.performSegueWithIdentifier("PresentCardSegue", sender: self)
+        }
+    }
     
     func setupScene() {
         // create a new scene

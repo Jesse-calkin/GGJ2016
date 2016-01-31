@@ -14,10 +14,21 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </sceneKitView>
+                    <connections>
+                        <segue destination="09c-EZ-cpx" kind="presentation" identifier="PresentCardSegue" id="Yco-AE-IF0"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="SZV-WD-TEh" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1078.5" y="985.5"/>
+        </scene>
+        <!--Card-->
+        <scene sceneID="Hfg-dE-Pfq">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Card" id="09c-EZ-cpx" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="wpP-K2-bD1" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1587.5" y="971"/>
         </scene>
         <!--Gregs Day View Controller-->
         <scene sceneID="wYK-az-ciq">
