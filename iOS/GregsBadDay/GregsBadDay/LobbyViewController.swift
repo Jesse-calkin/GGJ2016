@@ -18,4 +18,8 @@ class LobbyViewController: UIViewController {
         return affinity
     }
     
+    override func viewWillDisappear(animated: Bool) {
+        sharedGameDataController().affinity = affinity()
+    }
+    
 }
