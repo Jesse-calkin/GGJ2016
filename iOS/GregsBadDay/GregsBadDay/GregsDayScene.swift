@@ -11,9 +11,11 @@ import SpriteKit
 enum GregWalkType {
     case Normal
     case Moonwalk
+    case Happy
+    case Sad
     
     case Count
-    static let allValues = [Normal, Moonwalk, Count]
+    static let allValues = [Normal, Moonwalk, Happy, Sad, Count]
 }
 
 class GregsDayScene: SKScene {
@@ -30,17 +32,22 @@ class GregsDayScene: SKScene {
     override func didMoveToView(view: SKView) {
         loadWalkCycle(.Normal)
         loadWalkCycle(.Moonwalk)
-        
-        // TODOAdd More walk cycles here
-        
+        loadWalkCycle(.Happy)
+        loadWalkCycle(.Sad)
         
         defaultStandingFrame = walkingFrames[.Normal]![0]
         greg = SKSpriteNode(texture: defaultStandingFrame)
         
         addChild(greg)
-        greg.position = CGPoint(x: CGRectGetMidX(self.frame), y: CGRectGetMidY(self.frame))
+        greg.position = CGPoint(x: CGRectGetMidX(self.frame), y: 100)
         
         gregWalkWithType(.Normal)
+        
+        let background = SKSpriteNode(imageNamed: "kitchenbg")
+        background.size = frame.size
+        background.position = CGPoint(x: CGRectGetMidX(self.frame), y: CGRectGetMidY(self.frame))
+        background.zPosition = -1
+        self.addChild(background)
     }
     
     override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
@@ -79,7 +86,7 @@ class GregsDayScene: SKScene {
         let distanceToMove = fabs(greg.position.x - xToMoveTo);
         let duration = NSTimeInterval(distanceToMove / CGFloat(velocity))
         
-        let moveAction = SKAction.moveTo(CGPoint(x: xToMoveTo, y: self.frame.size.height/2), duration: duration)
+        let moveAction = SKAction.moveTo(CGPoint(x: xToMoveTo, y: greg.position.y), duration: duration)
         let doneAction = SKAction.runBlock { () -> Void in
             self.walkEnded(type)
         }
@@ -113,10 +120,19 @@ class GregsDayScene: SKScene {
         
         switch (type) {
         case .Normal, .Moonwalk:
-            atlas = SKTextureAtlas(named: "ShittyWalkCycle")
-            imageName = "ShittyWalkCycle_000%02d.png"
+            atlas = SKTextureAtlas(named: "RegularWalkCycle")
+            imageName = "RegularWalkCycle_000%02d.png"
             
             break
+        case .Happy:
+            atlas = SKTextureAtlas(named: "HappyWalkCycle")
+            imageName = "HappyWalkCycle_000%02d.png"
+            
+            break
+        case .Sad:
+            atlas = SKTextureAtlas(named: "SadWalkCycle")
+            imageName = "SadWalkCycle_000%02d.png"
+            
         default:
             return
         }
