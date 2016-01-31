@@ -14,10 +14,21 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </sceneKitView>
+                    <connections>
+                        <segue destination="vIS-ui-oc3" kind="presentation" identifier="PresentCardSegue" modalPresentationStyle="currentContext" id="9np-SQ-cbd"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="SZV-WD-TEh" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1078.5" y="985.5"/>
+        </scene>
+        <!--Card-->
+        <scene sceneID="rhP-sp-Ggv">
+            <objects>
+                <viewControllerPlaceholder storyboardIdentifier="Card" storyboardName="Card" id="vIS-ui-oc3" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Ujn-IT-8eM" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1547.5" y="1113"/>
         </scene>
         <!--Gregs Day View Controller-->
         <scene sceneID="wYK-az-ciq">
@@ -143,6 +154,7 @@
                         <viewControllerLayoutGuide type="bottom" id="YTc-WM-qel"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="apY-3O-gZh">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="i3m-eQ-5ya">

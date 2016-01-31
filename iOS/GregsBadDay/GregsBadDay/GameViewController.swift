@@ -13,8 +13,6 @@ import SpriteKit
 
 class GameViewController: UIViewController {
 
-    var cardScene: CardScene?
-
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -36,8 +34,7 @@ class GameViewController: UIViewController {
         scene.rootNode.addChildNode(ambientLightNode)
         
         // retrieve the SCNView
-        let scnView = self.view as! SCNView
-        
+        guard let scnView = self.view as? SCNView else { return }
         // set the scene to the view
         scnView.scene = scene
         
@@ -53,11 +50,13 @@ class GameViewController: UIViewController {
         // add a tap gesture recognizer
         let tapGesture = UITapGestureRecognizer(target: self, action: "handleTap:")
         scnView.addGestureRecognizer(tapGesture)
+    }
 
-        if let cardScene = CardScene(fileNamed:"CardScene") {
-            cardScene.scaleMode = .AspectFill
-            scnView.overlaySKScene = cardScene
-            scnView.playing = true
+    override func viewDidAppear(animated: Bool) {
+        super.viewDidAppear(animated)
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, Int64(3 * Float(NSEC_PER_SEC))), dispatch_get_main_queue()) {
+            print("Displaying Card View")
+            self.performSegueWithIdentifier("PresentCardSegue", sender: self)
         }
     }
 

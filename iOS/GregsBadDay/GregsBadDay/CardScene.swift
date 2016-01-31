@@ -25,14 +25,8 @@ class CardScene: SKScene {
     var hitboxes = [SKNode]()
 
     override func didMoveToView(view: SKView) {
-        trail = SKEmitterNode(fileNamed: "Trail.sks")
-        if let trail = trail {
-            trail.name = "Trail"
-            addChild(trail)
-            if debugEmitters { print("Added emitter: \(trail)") }
-        }
 
-        card = childNodeWithName("Card") as? SKSpriteNode
+        trail = childNodeWithName("Trail") as? SKEmitterNode
 
         self.enumerateChildNodesWithName("hitbox") { node, stop in
             if let node = node as? SKShapeNode {
@@ -45,10 +39,13 @@ class CardScene: SKScene {
         }
         if debugHitboxes { print("\(hitboxes.count) hitboxes found") }
     }
-    
+
+    deinit {
+        trail?.targetNode = nil
+    }
+
     override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
        /* Called when a touch begins */
-        
         for touch in touches {
             let point = touch.locationInNode(self)
 
@@ -58,24 +55,20 @@ class CardScene: SKScene {
     }
 
     override func touchesMoved(touches: Set<UITouch>, withEvent event: UIEvent?) {
+        guard !complete else { return }
+
         for touch in touches {
             let point = touch.locationInNode(self)
             checkForHit(point)
             updateTrail(point)
         }
-    }
 
-    override func touchesEnded(touches: Set<UITouch>, withEvent event: UIEvent?) {
-//        trail?.removeFromParent()// This will freeze the particles
+        checkProgress()
     }
 
     override func update(currentTime: CFTimeInterval) {
         /* Called before each frame is rendered */
         trail?.targetNode = self
-
-        guard !complete else { return }
-
-        checkProgress()
     }
 
     func updateTrail(point: CGPoint) {//TODO: call these methods from the SCNscene VC
