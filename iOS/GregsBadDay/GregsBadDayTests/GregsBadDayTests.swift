@@ -54,7 +54,7 @@ class GregsBadDayTests: XCTestCase {
     
     //  Damage tests
     
-    let requestsToMake:Int = 2
+    let requestsToMake:Int = 1
     var requestsMade:Int = 0
     
     func testDamage() {
@@ -70,7 +70,7 @@ class GregsBadDayTests: XCTestCase {
     
     func makeDamageRequest() {
         let gameDataController:GameDataController = GameDataController()
-        let playerAction = PlayerAction()
+        var playerAction = PlayerAction()
         gameDataController.postRequestForPlayerAction(playerAction) { (roundResult) -> Void in
             if self.requestsMade < self.requestsToMake {
                 self.makeDamageRequest()
