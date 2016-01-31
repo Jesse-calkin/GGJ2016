@@ -15,7 +15,7 @@
                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </sceneKitView>
                     <connections>
-                        <segue destination="09c-EZ-cpx" kind="presentation" identifier="PresentCardSegue" modalPresentationStyle="currentContext" id="Yco-AE-IF0"/>
+                        <segue destination="09c-EZ-cpx" kind="presentation" identifier="PresentCardSegue" modalPresentationStyle="currentContext" modalTransitionStyle="flipHorizontal" id="Yco-AE-IF0"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="SZV-WD-TEh" sceneMemberID="firstResponder"/>

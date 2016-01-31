@@ -33,10 +33,15 @@ class CardScene: SKScene {
         if let trail = trail {
             trail.name = "Trail"
             addChild(trail)
+            trail.particleColor = UIColor.whiteColor()
+            print("trail color: \(trail.particleColor)")
+            print("trail color sequence: \(trail.particleColorSequence)")
         }
 
         card = childNodeWithName("Card") as? SKSpriteNode
-        let magic = childNodeWithName("Magic") as? SKEmitterNode
+        if let magic = childNodeWithName("magic") as? SKEmitterNode {
+            magic.particleColor = UIColor.redColor()
+        }
 
         self.enumerateChildNodesWithName("hitbox") { node, stop in
             if let node = node as? SKShapeNode {
