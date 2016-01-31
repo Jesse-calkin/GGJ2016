@@ -9,13 +9,18 @@
 import SpriteKit
 import ObjectiveC
 
+protocol CardSceneDelegate {
+    func didComplete()
+}
+
 class CardScene: SKScene {
 
+    var cardDelegate: CardSceneDelegate?
     var debugHitboxes = false
     var complete = false {
         didSet {
-            print("🍻 COMPLETE!")
-            self.backgroundColor = UIColor.greenColor()
+            print("🍻 COMPLETE! 🎉")
+            cardDelegate?.didComplete()
         }
     }
 
