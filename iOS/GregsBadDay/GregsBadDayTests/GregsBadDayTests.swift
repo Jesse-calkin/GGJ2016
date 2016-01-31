@@ -41,6 +41,9 @@ class GregsBadDayTests: XCTestCase {
         
         let gameDataController:GameDataController = GameDataController()
         gameDataController.postRequestForPlayerAction(playerAction) { (roundResult) -> Void in
+            print("")
+            print(roundResult)
+            print("")
             expectation.fulfill()
         }
         

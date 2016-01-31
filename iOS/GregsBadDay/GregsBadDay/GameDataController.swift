@@ -41,8 +41,8 @@ class GameDataController: NSObject {
                              "arm_right": playerAction.rightArmValue,
                                   "body": playerAction.bodyValue,
                                   "head": playerAction.headValue,
-                              "leg_left": playerAction.legsValue,
-                             "leg_right": playerAction.legsValue,
+                              "leg_left": playerAction.leftLegValue,
+                             "leg_right": playerAction.rightLegValue,
         ]
         return bodyDictionary
     }
@@ -82,8 +82,9 @@ class GameDataController: NSObject {
             roundResult.bodyValue = dictionary["body_score"] as! Int
             roundResult.headValue = dictionary["head_score"] as! Int
             roundResult.leftArmValue = dictionary["arm_left_score"] as! Int
-            roundResult.legsValue = dictionary["leg_left_score"] as! Int
+            roundResult.leftLegValue = dictionary["leg_left_score"] as! Int
             roundResult.rightArmValue = dictionary["arm_right_score"] as! Int
+            roundResult.rightLegValue = dictionary["leg_right_score"] as! Int
             
             roundResult.currentRound = dictionary["current_level"] as! Int
             roundResult.nextRound = dictionary["next_level"] as? Int
