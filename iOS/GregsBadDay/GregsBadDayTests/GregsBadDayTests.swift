@@ -33,7 +33,7 @@ class GregsBadDayTests: XCTestCase {
         }
     }
     
-    func testGameDataController() {
+    func testGameDataControllerRequest() {
         
         let expectation = expectationWithDescription("success")
         
@@ -50,6 +50,33 @@ class GregsBadDayTests: XCTestCase {
         waitForExpectationsWithTimeout(20.0) { (error) -> Void in
             print("failure")
         }
+    }
+    
+    //  Damage tests
+    
+    let requestsToMake:Int = 2
+    var requestsMade:Int = 0
+    
+    func testDamage() {
+        
+        let expectation = expectationWithDescription("success")
+        
+        makeDamageRequest()
+        
+        waitForExpectationsWithTimeout(20.0) { (error) -> Void in
+            print("failure")
+        }
+    }
+    
+    func makeDamageRequest() {
+        let gameDataController:GameDataController = GameDataController()
+        let playerAction = PlayerAction()
+        gameDataController.postRequestForPlayerAction(playerAction) { (roundResult) -> Void in
+            if self.requestsMade < self.requestsToMake {
+                self.makeDamageRequest()
+            }
+        }
+        requestsMade = requestsMade + 1
     }
     
 }
