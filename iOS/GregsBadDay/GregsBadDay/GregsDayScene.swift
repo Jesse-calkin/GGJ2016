@@ -39,7 +39,8 @@ class GregsDayScene: SKScene {
         greg = SKSpriteNode(texture: defaultStandingFrame)
         
         addChild(greg)
-        greg.position = CGPoint(x: CGRectGetMidX(self.frame), y: 300)
+        greg.setScale(0.66)
+        greg.position = CGPoint(x: CGRectGetMidX(self.frame), y: 350)
         
         gregWalkWithType(.Happy)
         
@@ -126,8 +127,8 @@ class GregsDayScene: SKScene {
             
             break
         case .Happy:
-            atlas = SKTextureAtlas(named: "HappyWalkCycle")
-            imageName = "HappyWalkCycle_000%02d.png"
+            atlas = SKTextureAtlas(named: "Rich_HappyWalk")
+            imageName = "Rich_HappyWalk_000%02d.png"
             
             break
         case .Sad:
