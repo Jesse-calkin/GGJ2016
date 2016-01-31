@@ -11,7 +11,7 @@ import ObjectiveC
 
 class CardScene: SKScene {
 
-    var debugHitboxes = true
+    var debugHitboxes = false
     var debugEmitters = true
     var complete = false {
         didSet {
@@ -28,7 +28,6 @@ class CardScene: SKScene {
         trail = SKEmitterNode(fileNamed: "Trail.sks")
         if let trail = trail {
             trail.name = "Trail"
-//            trail.zPosition = 2
             addChild(trail)
             if debugEmitters { print("Added emitter: \(trail)") }
         }
@@ -72,7 +71,7 @@ class CardScene: SKScene {
 
     override func update(currentTime: CFTimeInterval) {
         /* Called before each frame is rendered */
-//        trail?.targetNode = self
+        trail?.targetNode = self
 
         guard !complete else { return }
 

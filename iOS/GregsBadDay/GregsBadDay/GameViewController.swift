@@ -13,6 +13,8 @@ import SpriteKit
 
 class GameViewController: UIViewController {
 
+    var cardScene: CardScene?
+
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -55,6 +57,7 @@ class GameViewController: UIViewController {
         if let cardScene = CardScene(fileNamed:"CardScene") {
             cardScene.scaleMode = .AspectFill
             scnView.overlaySKScene = cardScene
+            scnView.playing = true
         }
     }
 
