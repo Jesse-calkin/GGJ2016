@@ -4,8 +4,8 @@
   <contributor>
    <authoring_tool>SceneKit Collada Exporter v1.0</authoring_tool>
   </contributor>
-  <created>2016-01-31T20:05:59Z</created>
-  <modified>2016-01-31T20:05:59Z</modified>
+  <created>2016-01-31T20:31:10Z</created>
+  <modified>2016-01-31T20:31:10Z</modified>
   <unit meter="0.010000"/>
   <up_axis>Y_UP</up_axis>
  </asset>
@@ -1114,7 +1114,7 @@
     <instance_geometry url="#ID53"/>
     <extra>
      <technique profile="SceneKit">
-      <visibility>0</visibility>
+      <opacity>0.0100001</opacity>
      </technique>
     </extra>
    </node>
@@ -1123,7 +1123,7 @@
     <instance_geometry url="#ID62"/>
     <extra>
      <technique profile="SceneKit">
-      <visibility>0</visibility>
+      <opacity>0.0100001</opacity>
      </technique>
     </extra>
    </node>
@@ -1132,7 +1132,7 @@
     <instance_geometry url="#ID71"/>
     <extra>
      <technique profile="SceneKit">
-      <visibility>0</visibility>
+      <opacity>0.0100001</opacity>
      </technique>
     </extra>
    </node>
@@ -1141,7 +1141,7 @@
     <instance_geometry url="#ID80"/>
     <extra>
      <technique profile="SceneKit">
-      <visibility>0</visibility>
+      <opacity>0.0100001</opacity>
      </technique>
     </extra>
    </node>
@@ -1150,7 +1150,7 @@
     <instance_geometry url="#ID89"/>
     <extra>
      <technique profile="SceneKit">
-      <visibility>0</visibility>
+      <opacity>0.0100001</opacity>
      </technique>
     </extra>
    </node>
@@ -1159,7 +1159,7 @@
     <instance_geometry url="#ID98"/>
     <extra>
      <technique profile="SceneKit">
-      <visibility>0</visibility>
+      <opacity>0.0100001</opacity>
      </technique>
     </extra>
    </node>

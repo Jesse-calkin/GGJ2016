@@ -19,6 +19,8 @@ class GameViewController: UIViewController {
     var playerAction = PlayerAction()
     let roundLength:NSTimeInterval = 20
     
+    var canPoke = false;
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -64,6 +66,9 @@ class GameViewController: UIViewController {
             
             showCard()
         }
+        else {
+            canPoke = true
+        }
     }
     
     func showCard() {
@@ -89,14 +94,32 @@ class GameViewController: UIViewController {
         let p = gestureRecognize.locationInView(scnView)
         let hitResults = scnView.hitTest(p, options: nil)
         // check that we clicked on at least one object
-        if hitResults.count > 0 {
+        if hitResults.count > 0 && canPoke {
             // retrieved the first clicked object
             let result: AnyObject! = hitResults[0]
             
             if (result.node.name != "Pin") {
-                // TODO Check which part of the doll got stabbed
-                if (result.node.name == "Doll") {
-                    playerAction.headValue++
+                canPoke = false
+                
+                for result in hitResults {
+                    if result.node.name == "voodoo_torso" {
+                        playerAction.bodyValue++
+                    }
+                    else if result.node.name == "voodoo_head" {
+                        playerAction.headValue++
+                    }
+                    else if result.node.name == "voodoo_Rleg" {
+                        playerAction.rightLegValue++
+                    }
+                    else if result.node.name == "voodoo_leftLeg" {
+                        playerAction.leftLegValue++
+                    }
+                    else if result.node.name == "voodoo_leftarm" {
+                        playerAction.leftArmValue++
+                    }
+                    else if result.node.name == "voodoo_rightarm" {
+                        playerAction.rightArmValue++
+                    }
                 }
                 
                 let pin = pinNode.copy() as! SCNNode
