@@ -36,6 +36,7 @@ class CardScene: SKScene {
         }
 
         card = childNodeWithName("Card") as? SKSpriteNode
+        let magic = childNodeWithName("Magic") as? SKEmitterNode
 
         self.enumerateChildNodesWithName("hitbox") { node, stop in
             if let node = node as? SKShapeNode {
@@ -48,7 +49,11 @@ class CardScene: SKScene {
         }
         print("\(hitboxes.count) hitboxes found")
     }
-    
+
+    override func willMoveFromView(view: SKView) {
+        cardDelegate = nil
+    }
+
     override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
        /* Called when a touch begins */
         
