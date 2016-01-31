@@ -9,8 +9,9 @@
 import Foundation
 
 struct PlayerAction {
-    var armsValue: Int
     var bodyValue: Int
     var headValue: Int
+    var leftArmValue: Int
     var legsValue: Int
+    var rightArmValue: Int
 }

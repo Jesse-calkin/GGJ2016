@@ -37,10 +37,11 @@ class GameDataController: NSObject {
     
     func bodyDictionaryForPlayerAction(playerAction:PlayerAction)-> [String: AnyObject] {
     
-        let bodyDictionary = ["armsValue": playerAction.armsValue,
-                              "bodyValue": playerAction.bodyValue,
+        let bodyDictionary = ["bodyValue": playerAction.bodyValue,
                               "headValue": playerAction.headValue,
-                              "legsValue": playerAction.legsValue]
+                              "legsValue": playerAction.legsValue,
+                           "leftArmValue": playerAction.leftArmValue,
+                          "rightArmValue": playerAction.rightArmValue]
         return bodyDictionary
     }
     
@@ -74,20 +75,24 @@ class GameDataController: NSObject {
         
         if let dictionary = roundResultDictionaryForData(data) {
             
-            let currentRound:Int = dictionary["current_level"] as! Int
-            let armsValue:Int = dictionary["arms_score"] as! Int
             let bodyValue:Int = dictionary["body_score"] as! Int
             let headValue:Int = dictionary["head_score"] as! Int
+            let leftArmValue:Int = dictionary["arms_score"] as! Int
             let legsValue:Int = dictionary["legs_score"] as! Int
+            let rightArmValue:Int = dictionary["arms_score"] as! Int
             
+            let currentRound:Int = dictionary["current_level"] as! Int
             let nextRound:Int = dictionary["next_level"] as! Int
             
-            let roundResult:RoundResult = RoundResult(currentRound: currentRound,
-                                                         armsValue: armsValue,
-                                                         bodyValue: bodyValue,
-                                                         headValue: headValue,
-                                                         legsValue: legsValue,
-                                                         nextRound: nextRound)
+            let roundResult:RoundResult = RoundResult(
+                bodyValue:bodyValue,
+                headValue: headValue,
+                leftArmValue: leftArmValue,
+                legsValue: legsValue,
+                rightArmValue: rightArmValue,
+                currentRound: currentRound,
+                nextRound: nextRound
+            )
             return roundResult
         }
         else {

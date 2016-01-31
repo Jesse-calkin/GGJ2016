@@ -9,11 +9,12 @@
 import Foundation
 
 struct RoundResult {
-    var currentRound: Int
-    var armsValue: Int
     var bodyValue: Int
     var headValue: Int
+    var leftArmValue: Int
     var legsValue: Int
+    var rightArmValue: Int
     
+    var currentRound: Int
     var nextRound: Int?
 }
