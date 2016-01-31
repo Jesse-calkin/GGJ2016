@@ -8,6 +8,7 @@
 
 import SpriteKit
 import ObjectiveC
+import CoreMotion
 
 protocol CardSceneDelegate {
     func didComplete()
@@ -15,8 +16,13 @@ protocol CardSceneDelegate {
 
 class CardScene: SKScene {
 
+    let motionManager = CMMotionManager()
+
     var cardDelegate: CardSceneDelegate?
+
     var debugHitboxes = false
+    var debugEmitters = false
+
     var complete = false {
         didSet {
             print("🍻 COMPLETE! 🎉")
@@ -57,6 +63,8 @@ class CardScene: SKScene {
             self.hitboxes.append(node)
         }
         print("\(hitboxes.count) hitboxes found")
+
+        setupMotion()
     }
 
     override func willMoveFromView(view: SKView) {
@@ -96,6 +104,8 @@ class CardScene: SKScene {
     }
 
     func updateTrail(point: CGPoint) {
+        if debugEmitters { print("updating trail: \(point)") }
+
         if let trail = trail {
             trail.position = point
         }
@@ -118,6 +128,25 @@ class CardScene: SKScene {
 
         if completedHits.count == hitboxes.count {
             complete = true
+        }
+    }
+
+    func setupMotion() {
+        guard motionManager.deviceMotionAvailable else {
+            print("‼️ Device motion not available ‼️")
+            return
+        }
+
+        motionManager.deviceMotionUpdateInterval = 0.1
+        motionManager.startDeviceMotionUpdatesToQueue(NSOperationQueue.mainQueue()) { [weak self] (data, error) -> Void in
+            guard let weakSelf = self else { return }
+//            let multiplier: CGFloat = 300.0
+            let x = CGFloat((data?.gravity.x)!) * (weakSelf.card?.frame.size.width)!
+            let y = CGFloat((data?.gravity.y)!) * (weakSelf.card?.frame.size.height)!
+            let point = CGPoint(x: (weakSelf.card!.position.x) + x, y: (weakSelf.card!.position.y) + y)
+
+            weakSelf.updateTrail(point)
+            weakSelf.checkForHit((weakSelf.trail?.position)!)
         }
     }
 }
