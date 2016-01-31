@@ -17,6 +17,11 @@
 		0FC746BF1C5D4864003F9A6D /* GregsDayScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 0FC746BE1C5D4864003F9A6D /* GregsDayScene.sks */; };
 		0FC746C21C5D48E3003F9A6D /* GregsDayScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FC746C11C5D48E3003F9A6D /* GregsDayScene.swift */; };
 		0FC746C41C5D4B52003F9A6D /* ShittyWalkCycle.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 0FC746C31C5D4B52003F9A6D /* ShittyWalkCycle.atlas */; };
+		8816BF2E1C5D7528009AC8BB /* CardScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 8816BF291C5D7528009AC8BB /* CardScene.sks */; };
+		8816BF2F1C5D7528009AC8BB /* Trail.sks in Resources */ = {isa = PBXBuildFile; fileRef = 8816BF2A1C5D7528009AC8BB /* Trail.sks */; };
+		8816BF301C5D7528009AC8BB /* spark.png in Resources */ = {isa = PBXBuildFile; fileRef = 8816BF2B1C5D7528009AC8BB /* spark.png */; };
+		8816BF311C5D7528009AC8BB /* CardScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8816BF2C1C5D7528009AC8BB /* CardScene.swift */; };
+		8816BF321C5D7528009AC8BB /* CardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8816BF2D1C5D7528009AC8BB /* CardViewController.swift */; };
 		AD5242C81C5C9FD700D11583 /* GameDataController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD5242C71C5C9FD700D11583 /* GameDataController.swift */; };
 		AD5242D01C5D245E00D11583 /* GregsBadDayTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD5242CF1C5D245E00D11583 /* GregsBadDayTests.swift */; };
 		ADB912771C5C951400BF747D /* LobbyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADB912761C5C951400BF747D /* LobbyViewController.swift */; };
@@ -48,6 +53,11 @@
 		0FC746BE1C5D4864003F9A6D /* GregsDayScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = GregsDayScene.sks; sourceTree = "<group>"; };
 		0FC746C11C5D48E3003F9A6D /* GregsDayScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GregsDayScene.swift; sourceTree = "<group>"; };
 		0FC746C31C5D4B52003F9A6D /* ShittyWalkCycle.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = ShittyWalkCycle.atlas; sourceTree = "<group>"; };
+		8816BF291C5D7528009AC8BB /* CardScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = CardScene.sks; sourceTree = "<group>"; };
+		8816BF2A1C5D7528009AC8BB /* Trail.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Trail.sks; sourceTree = "<group>"; };
+		8816BF2B1C5D7528009AC8BB /* spark.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = spark.png; sourceTree = "<group>"; };
+		8816BF2C1C5D7528009AC8BB /* CardScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CardScene.swift; sourceTree = "<group>"; };
+		8816BF2D1C5D7528009AC8BB /* CardViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CardViewController.swift; sourceTree = "<group>"; };
 		AD5242C71C5C9FD700D11583 /* GameDataController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameDataController.swift; sourceTree = "<group>"; };
 		AD5242CD1C5D245E00D11583 /* GregsBadDayTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = GregsBadDayTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		AD5242CF1C5D245E00D11583 /* GregsBadDayTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GregsBadDayTests.swift; sourceTree = "<group>"; };
@@ -104,6 +114,7 @@
 				ADB912761C5C951400BF747D /* LobbyViewController.swift */,
 				ADDC95901C5D6762009086A2 /* PlayerAction.swift */,
 				ADDC95961C5D880A009086A2 /* RoundResult.swift */,
+				8816BF281C5D7271009AC8BB /* Card Scene */,
 				0FC746C01C5D486D003F9A6D /* Gregs Day */,
 				0FC746891C5C8B9B003F9A6D /* LaunchScreen.storyboard */,
 				0FC746841C5C8B9B003F9A6D /* Main.storyboard */,
@@ -123,6 +134,18 @@
 				0FC746BE1C5D4864003F9A6D /* GregsDayScene.sks */,
 			);
 			name = "Gregs Day";
+			sourceTree = "<group>";
+		};
+		8816BF281C5D7271009AC8BB /* Card Scene */ = {
+			isa = PBXGroup;
+			children = (
+				8816BF291C5D7528009AC8BB /* CardScene.sks */,
+				8816BF2A1C5D7528009AC8BB /* Trail.sks */,
+				8816BF2B1C5D7528009AC8BB /* spark.png */,
+				8816BF2C1C5D7528009AC8BB /* CardScene.swift */,
+				8816BF2D1C5D7528009AC8BB /* CardViewController.swift */,
+			);
+			name = "Card Scene";
 			sourceTree = "<group>";
 		};
 		AD5242CE1C5D245E00D11583 /* GregsBadDayTests */ = {
@@ -215,11 +238,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				0FC746BF1C5D4864003F9A6D /* GregsDayScene.sks in Resources */,
+				8816BF301C5D7528009AC8BB /* spark.png in Resources */,
 				0FC746811C5C8B9B003F9A6D /* art.scnassets in Resources */,
 				0FC7468B1C5C8B9B003F9A6D /* LaunchScreen.storyboard in Resources */,
 				0FC746881C5C8B9B003F9A6D /* Assets.xcassets in Resources */,
+				8816BF2F1C5D7528009AC8BB /* Trail.sks in Resources */,
 				0FC746C41C5D4B52003F9A6D /* ShittyWalkCycle.atlas in Resources */,
 				0FC746861C5C8B9B003F9A6D /* Main.storyboard in Resources */,
+				8816BF2E1C5D7528009AC8BB /* CardScene.sks in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -244,7 +270,9 @@
 				ADDC95911C5D6762009086A2 /* PlayerAction.swift in Sources */,
 				ADDC95971C5D880A009086A2 /* RoundResult.swift in Sources */,
 				ADDC95951C5D6D88009086A2 /* DollViewController.swift in Sources */,
+				8816BF311C5D7528009AC8BB /* CardScene.swift in Sources */,
 				0FC746C21C5D48E3003F9A6D /* GregsDayScene.swift in Sources */,
+				8816BF321C5D7528009AC8BB /* CardViewController.swift in Sources */,
 				AD5242C81C5C9FD700D11583 /* GameDataController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

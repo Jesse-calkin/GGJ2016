@@ -22,6 +22,7 @@ class GregsDayScene: SKScene {
 
     var walkingFrames = [GregWalkType :[SKTexture]]()
     var defaultStandingFrame = SKTexture()
+    let velocity = 80
     
     var currentWalkType = GregWalkType.Normal
     var movingRight = true
@@ -61,25 +62,24 @@ class GregsDayScene: SKScene {
         greg.removeAllActions()
         
         let wait = SKAction.waitForDuration(1)
-        let flip = SKAction.scaleXTo(greg.xScale * -1, duration: 0.5)
-        let flipBack = SKAction.scaleXTo(greg.xScale, duration: 0.25)
+        let flip = SKAction.rotateByAngle(CGFloat(M_PI * 2), duration: 0.25)
         let moveAgain = SKAction.runBlock { () -> Void in
             self.gregWalkWithType(type)
         }
         
-        let sequence = SKAction.sequence([wait, flip, flipBack, moveAgain])
+        let sequence = SKAction.sequence([wait, flip, moveAgain])
         
         greg.runAction(sequence, withKey: "new walk")
     }
     
     func gregWalkWithType(type : GregWalkType) {
-        let xToMoveTo = movingRight ? self.frame.size.width : 0
+        let xToMoveTo = movingRight ? self.frame.size.width - 10 : 10
+        greg.xScale = type == .Moonwalk ? (movingRight ? -fabs(greg.xScale) : fabs(greg.xScale)) : (movingRight ? fabs(greg.xScale) : -fabs(greg.xScale));
         
-        if (type == .Moonwalk) {
-            greg.xScale = movingRight ? -fabs(greg.xScale) : fabs(greg.xScale);
-        }
+        let distanceToMove = fabs(greg.position.x - xToMoveTo);
+        let duration = NSTimeInterval(distanceToMove / CGFloat(velocity))
         
-        let moveAction = SKAction.moveTo(CGPoint(x: xToMoveTo, y: self.frame.size.height/2), duration: 5)
+        let moveAction = SKAction.moveTo(CGPoint(x: xToMoveTo, y: self.frame.size.height/2), duration: duration)
         let doneAction = SKAction.runBlock { () -> Void in
             self.walkEnded(type)
         }
@@ -87,17 +87,24 @@ class GregsDayScene: SKScene {
         let motionAction = SKAction.sequence([moveAction, doneAction])
         greg.runAction(motionAction, withKey: "moving")
         
-        greg.runAction((SKAction.repeatActionForever(SKAction.animateWithTextures(walkingFrames[type]!, timePerFrame: 0.1, resize: false, restore: true))), withKey: "walking")
+        greg.runAction((SKAction.repeatActionForever(SKAction.animateWithTextures(walkingFrames[type]!, timePerFrame: 0.05, resize: false, restore: true))), withKey: "walking")
         
         currentWalkType = type
     }
     
     func walkEnded(type : GregWalkType) {
         greg.removeAllActions()
+
+        let flip = SKAction.scaleXTo(greg.xScale * -1, duration: 0.5)
+        let doneAction = SKAction.runBlock { () -> Void in
+            self.greg.removeAllActions()
+            
+            self.movingRight = !self.movingRight
+            self.gregWalkWithType(type)
+        }
         
-        movingRight = !movingRight
-        
-        gregWalkWithType(type)
+        let sequence = SKAction.sequence([flip, doneAction])
+        greg.runAction(sequence, withKey: "flip")
     }
     
     func loadWalkCycle(type: GregWalkType) {
