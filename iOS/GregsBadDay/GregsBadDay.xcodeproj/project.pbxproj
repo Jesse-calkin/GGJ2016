@@ -25,6 +25,7 @@
 		8816BF311C5D7528009AC8BB /* CardScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8816BF2C1C5D7528009AC8BB /* CardScene.swift */; };
 		8816BF321C5D7528009AC8BB /* CardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8816BF2D1C5D7528009AC8BB /* CardViewController.swift */; };
 		8816BF3B1C5DDD6C009AC8BB /* Card.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8816BF3A1C5DDD6C009AC8BB /* Card.storyboard */; };
+		8816BF3D1C5DEF54009AC8BB /* Magic.sks in Resources */ = {isa = PBXBuildFile; fileRef = 8816BF3C1C5DEF54009AC8BB /* Magic.sks */; };
 		AD5242C81C5C9FD700D11583 /* GameDataController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD5242C71C5C9FD700D11583 /* GameDataController.swift */; };
 		AD5242D01C5D245E00D11583 /* GregsBadDayTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD5242CF1C5D245E00D11583 /* GregsBadDayTests.swift */; };
 		ADB912771C5C951400BF747D /* LobbyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADB912761C5C951400BF747D /* LobbyViewController.swift */; };
@@ -63,6 +64,7 @@
 		8816BF2C1C5D7528009AC8BB /* CardScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CardScene.swift; sourceTree = "<group>"; };
 		8816BF2D1C5D7528009AC8BB /* CardViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CardViewController.swift; sourceTree = "<group>"; };
 		8816BF391C5DDD6C009AC8BB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Card.storyboard; sourceTree = "<group>"; };
+		8816BF3C1C5DEF54009AC8BB /* Magic.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Magic.sks; sourceTree = "<group>"; };
 		AD5242C71C5C9FD700D11583 /* GameDataController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameDataController.swift; sourceTree = "<group>"; };
 		AD5242CD1C5D245E00D11583 /* GregsBadDayTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = GregsBadDayTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		AD5242CF1C5D245E00D11583 /* GregsBadDayTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GregsBadDayTests.swift; sourceTree = "<group>"; };
@@ -158,6 +160,7 @@
 				8816BF2B1C5D7528009AC8BB /* spark.png */,
 				8816BF2C1C5D7528009AC8BB /* CardScene.swift */,
 				8816BF2D1C5D7528009AC8BB /* CardViewController.swift */,
+				8816BF3C1C5DEF54009AC8BB /* Magic.sks */,
 			);
 			name = "Card Scene";
 			sourceTree = "<group>";
@@ -255,6 +258,7 @@
 				0FC746BF1C5D4864003F9A6D /* GregsDayScene.sks in Resources */,
 				8816BF301C5D7528009AC8BB /* spark.png in Resources */,
 				0FC746811C5C8B9B003F9A6D /* art.scnassets in Resources */,
+				8816BF3D1C5DEF54009AC8BB /* Magic.sks in Resources */,
 				0FC746C91C5DC3BB003F9A6D /* RegularWalkCycle.atlas in Resources */,
 				0FC7468B1C5C8B9B003F9A6D /* LaunchScreen.storyboard in Resources */,
 				0FC746881C5C8B9B003F9A6D /* Assets.xcassets in Resources */,
