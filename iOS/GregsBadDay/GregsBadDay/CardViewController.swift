@@ -15,6 +15,7 @@ class CardViewController: UIViewController {
         super.viewDidLoad()
 
         if let scene = CardScene(fileNamed:"CardScene") {
+            scene.cardDelegate = self
             // Configure the view.
             let skView = self.view as! SKView
             skView.showsFPS = true
@@ -25,7 +26,6 @@ class CardViewController: UIViewController {
             
             /* Set the scale mode to scale to fit the window */
             scene.scaleMode = .AspectFill
-            
             skView.presentScene(scene)
         }
     }
@@ -49,5 +49,11 @@ class CardViewController: UIViewController {
 
     override func prefersStatusBarHidden() -> Bool {
         return true
+    }
+}
+
+extension CardViewController: CardSceneDelegate {
+    func didComplete() {
+        dismissViewControllerAnimated(true, completion: nil)
     }
 }
