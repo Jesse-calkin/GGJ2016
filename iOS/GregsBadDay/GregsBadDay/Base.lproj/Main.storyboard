@@ -210,10 +210,13 @@
                             </mask>
                         </variation>
                     </view>
+                    <connections>
+                        <segue destination="BV1-FR-VrT" kind="show" identifier="ShowGameSegue" id="uzt-Sa-lSY"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Gmp-ZF-Ipt" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="264" y="985"/>
+            <point key="canvasLocation" x="232" y="985"/>
         </scene>
     </scenes>
     <resources>
