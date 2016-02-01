@@ -35,6 +35,8 @@ class GameViewController: UIViewController {
         super.viewDidAppear(animated)
         
         setupRoundWithLength(roundLength)
+        
+        sharedGameSoundController().playSoundWithName("Demonic Growl 1 (ECHO)")
     }
     
     func setupScene() {
@@ -174,6 +176,8 @@ class GameViewController: UIViewController {
                 SCNTransaction.setAnimationTimingFunction(CAMediaTimingFunction(name: kCAMediaTimingFunctionEaseOut))
                 
                 pin.position = coordinates
+                
+                sharedGameSoundController().playSoundWithName("Pin insert 2")
                 
                 SCNTransaction.setCompletionBlock({ () -> Void in
                     self.showCard()

@@ -74,17 +74,17 @@ class GregsDayScene: SKScene {
     
     func setNewWalkType(type: GregWalkType) {
         greg.removeAllActions()
-        
-        // TODO take out this flip thing probably
-        let wait = SKAction.waitForDuration(1)
+    
         let zapp = SKAction.animateWithTextures(walkingFrames[.Zapp]!, timePerFrame: 0.1, resize: false, restore: true)
         let moveAgain = SKAction.runBlock { () -> Void in
             self.gregWalkWithType(type)
         }
         
-        let sequence = SKAction.sequence([wait, zapp, moveAgain])
+        let sequence = SKAction.sequence([zapp, moveAgain])
         
         greg.runAction(sequence, withKey: "new walk")
+        
+        sharedGameSoundController().playSoundWithName("Electrical zap 4")
     }
     
     func gregWalkWithType(type : GregWalkType) {
@@ -98,6 +98,8 @@ class GregsDayScene: SKScene {
         let doneAction = SKAction.runBlock { () -> Void in
             self.walkEnded(type)
         }
+        
+        sharedGameSoundController().playSoundWithName("Footsteps 1")
         
         let motionAction = SKAction.sequence([moveAction, doneAction])
         greg.runAction(motionAction, withKey: "moving")
@@ -214,10 +216,13 @@ class GregsDayScene: SKScene {
         if roundResult.evilWins() {
             print("👹 Evil WINS! 👹")
             setNewWalkType(.Sad)
+            
+            sharedGameSoundController().playSoundWithName("Rich Reaction (Walk it off)")
         } else {
             print("👼 Good WINS! 👼")
             setNewWalkType(.Happy)
+            
+            sharedGameSoundController().playSoundWithName("Rich Reaction (Hurumph)")
         }
     }
-    
 }

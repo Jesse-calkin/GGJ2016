@@ -18,6 +18,12 @@ class LobbyViewController: UIViewController {
         return affinity
     }
     
+    override func viewDidAppear(animated: Bool) {
+        super.viewDidAppear(animated)
+
+        sharedGameSoundController().playSoundWithName("Hello, welcome to our little game (intro line 1)")
+    }
+    
     override func viewWillDisappear(animated: Bool) {
         sharedGameDataController().affinity = affinity()
     }
