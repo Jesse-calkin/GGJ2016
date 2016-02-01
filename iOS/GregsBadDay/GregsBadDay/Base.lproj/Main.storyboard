@@ -190,6 +190,7 @@
                         <variation key="heightClass=regular-widthClass=compact">
                             <mask key="subviews">
                                 <include reference="fJG-vM-KFu"/>
+                                <include reference="owI-k1-4x3"/>
                             </mask>
                             <mask key="constraints">
                                 <include reference="E18-0k-L0r"/>
