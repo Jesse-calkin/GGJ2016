@@ -15,6 +15,7 @@ class LobbyViewController: UIViewController {
             guard let affinity = affinity else { return }
             sharedGameDataController().affinity = affinity
             print("Affinity: \(affinity)")
+            performSegueWithIdentifier("ShowGameSegue", sender: self)
         }
     }
 
