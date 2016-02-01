@@ -9,13 +9,13 @@
 import UIKit
 
 class LobbyViewController: UIViewController {
-    
-    @IBOutlet weak var startButton: UIButton?
-    @IBOutlet weak var affinitySwitch: UISwitch?
 
-    func affinity()-> Affinity {
-        let affinity:Affinity = (affinitySwitch!.on ? .Good : .Bad)
-        return affinity
+    var affinity: Affinity? {
+        didSet {
+            guard let affinity = affinity else { return }
+            sharedGameDataController().affinity = affinity
+            print("Affinity: \(affinity)")
+        }
     }
     
     override func viewDidAppear(animated: Bool) {
@@ -23,9 +23,8 @@ class LobbyViewController: UIViewController {
 
         sharedGameSoundController().playSoundWithName("Hello, welcome to our little game (intro line 1)")
     }
-    
-    override func viewWillDisappear(animated: Bool) {
-        sharedGameDataController().affinity = affinity()
+
+    @IBAction func chooseYourDestiny(sender: UIButton) {
+        affinity = sender.tag == 0 ? .Bad : .Good
     }
-    
 }
