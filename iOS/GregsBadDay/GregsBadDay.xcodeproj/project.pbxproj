@@ -16,8 +16,6 @@
 		0FC746BD1C5D4798003F9A6D /* GregsDayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FC746BC1C5D4798003F9A6D /* GregsDayViewController.swift */; };
 		0FC746BF1C5D4864003F9A6D /* GregsDayScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 0FC746BE1C5D4864003F9A6D /* GregsDayScene.sks */; };
 		0FC746C21C5D48E3003F9A6D /* GregsDayScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FC746C11C5D48E3003F9A6D /* GregsDayScene.swift */; };
-		0FC746C91C5DC3BB003F9A6D /* RegularWalkCycle.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 0FC746C61C5DC3BB003F9A6D /* RegularWalkCycle.atlas */; };
-		0FC746CA1C5DC3BB003F9A6D /* SadWalkCycle.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 0FC746C71C5DC3BB003F9A6D /* SadWalkCycle.atlas */; };
 		0FC746CD1C5EAB57003F9A6D /* Rich_HappyWalk.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 0FC746CC1C5EAB57003F9A6D /* Rich_HappyWalk.atlas */; };
 		0FC746CF1C5EC0D3003F9A6D /* Zapp.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 0FC746CE1C5EC0D3003F9A6D /* Zapp.atlas */; };
 		0FC746D31C5EC860003F9A6D /* GameSoundController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FC746D21C5EC860003F9A6D /* GameSoundController.swift */; };
@@ -62,6 +60,8 @@
 		0FC747251C5ED032003F9A6D /* Zip Swish 3.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 0FC746FC1C5ED032003F9A6D /* Zip Swish 3.mp3 */; };
 		0FC747261C5ED032003F9A6D /* Zip Swish 4.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 0FC746FD1C5ED032003F9A6D /* Zip Swish 4.mp3 */; };
 		0FC747271C5ED032003F9A6D /* Zip Swish 5.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 0FC746FE1C5ED032003F9A6D /* Zip Swish 5.mp3 */; };
+		0FC7472F1C5EDEE5003F9A6D /* Rich_Regular.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 0FC7472D1C5EDEE5003F9A6D /* Rich_Regular.atlas */; };
+		0FC747301C5EDEE5003F9A6D /* Rich_SadWalkCycle.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 0FC7472E1C5EDEE5003F9A6D /* Rich_SadWalkCycle.atlas */; };
 		8816BF2E1C5D7528009AC8BB /* CardScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 8816BF291C5D7528009AC8BB /* CardScene.sks */; };
 		8816BF2F1C5D7528009AC8BB /* Trail.sks in Resources */ = {isa = PBXBuildFile; fileRef = 8816BF2A1C5D7528009AC8BB /* Trail.sks */; };
 		8816BF301C5D7528009AC8BB /* spark.png in Resources */ = {isa = PBXBuildFile; fileRef = 8816BF2B1C5D7528009AC8BB /* spark.png */; };
@@ -99,8 +99,6 @@
 		0FC746BC1C5D4798003F9A6D /* GregsDayViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GregsDayViewController.swift; sourceTree = "<group>"; };
 		0FC746BE1C5D4864003F9A6D /* GregsDayScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = GregsDayScene.sks; sourceTree = "<group>"; };
 		0FC746C11C5D48E3003F9A6D /* GregsDayScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GregsDayScene.swift; sourceTree = "<group>"; };
-		0FC746C61C5DC3BB003F9A6D /* RegularWalkCycle.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = RegularWalkCycle.atlas; sourceTree = "<group>"; };
-		0FC746C71C5DC3BB003F9A6D /* SadWalkCycle.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = SadWalkCycle.atlas; sourceTree = "<group>"; };
 		0FC746CC1C5EAB57003F9A6D /* Rich_HappyWalk.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = Rich_HappyWalk.atlas; sourceTree = "<group>"; };
 		0FC746CE1C5EC0D3003F9A6D /* Zapp.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = Zapp.atlas; sourceTree = "<group>"; };
 		0FC746D21C5EC860003F9A6D /* GameSoundController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameSoundController.swift; sourceTree = "<group>"; };
@@ -145,6 +143,8 @@
 		0FC746FC1C5ED032003F9A6D /* Zip Swish 3.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "Zip Swish 3.mp3"; sourceTree = "<group>"; };
 		0FC746FD1C5ED032003F9A6D /* Zip Swish 4.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "Zip Swish 4.mp3"; sourceTree = "<group>"; };
 		0FC746FE1C5ED032003F9A6D /* Zip Swish 5.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "Zip Swish 5.mp3"; sourceTree = "<group>"; };
+		0FC7472D1C5EDEE5003F9A6D /* Rich_Regular.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = Rich_Regular.atlas; sourceTree = "<group>"; };
+		0FC7472E1C5EDEE5003F9A6D /* Rich_SadWalkCycle.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = Rich_SadWalkCycle.atlas; sourceTree = "<group>"; };
 		8816BF291C5D7528009AC8BB /* CardScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = CardScene.sks; sourceTree = "<group>"; };
 		8816BF2A1C5D7528009AC8BB /* Trail.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Trail.sks; sourceTree = "<group>"; };
 		8816BF2B1C5D7528009AC8BB /* spark.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = spark.png; sourceTree = "<group>"; };
@@ -235,9 +235,9 @@
 		0FC746CB1C5DC3C6003F9A6D /* Walk Cycles */ = {
 			isa = PBXGroup;
 			children = (
+				0FC7472D1C5EDEE5003F9A6D /* Rich_Regular.atlas */,
+				0FC7472E1C5EDEE5003F9A6D /* Rich_SadWalkCycle.atlas */,
 				0FC746CC1C5EAB57003F9A6D /* Rich_HappyWalk.atlas */,
-				0FC746C61C5DC3BB003F9A6D /* RegularWalkCycle.atlas */,
-				0FC746C71C5DC3BB003F9A6D /* SadWalkCycle.atlas */,
 				0FC746CE1C5EC0D3003F9A6D /* Zapp.atlas */,
 			);
 			name = "Walk Cycles";
@@ -405,7 +405,6 @@
 				0FC747121C5ED032003F9A6D /* Rich Reaction (Hurumph).mp3 in Resources */,
 				0FC7471B1C5ED032003F9A6D /* Sticker Slap 1.mp3 in Resources */,
 				8816BF3D1C5DEF54009AC8BB /* Magic.sks in Resources */,
-				0FC746C91C5DC3BB003F9A6D /* RegularWalkCycle.atlas in Resources */,
 				0FC747251C5ED032003F9A6D /* Zip Swish 3.mp3 in Resources */,
 				0FC747061C5ED032003F9A6D /* Footsteps 2.mp3 in Resources */,
 				0FC747141C5ED032003F9A6D /* Rich Reaction (I understand).mp3 in Resources */,
@@ -418,15 +417,15 @@
 				0FC747181C5ED032003F9A6D /* Rich Reaction (Walk it off).mp3 in Resources */,
 				0FC747071C5ED032003F9A6D /* Footsteps 3.mp3 in Resources */,
 				0FC747011C5ED032003F9A6D /* Electrical zap 1.mp3 in Resources */,
-				883C5FC11C5EA0D60000DA94 /* Reactor.scnp in Resources */,
 				0FC746FF1C5ED032003F9A6D /* Demonic Growl 1 (ECHO).mp3 in Resources */,
+				0FC747301C5EDEE5003F9A6D /* Rich_SadWalkCycle.atlas in Resources */,
+				0FC7472F1C5EDEE5003F9A6D /* Rich_Regular.atlas in Resources */,
 				0FC747131C5ED032003F9A6D /* Rich Reaction (I am so smart).mp3 in Resources */,
 				0FC7470B1C5ED032003F9A6D /* Latin Speak (normal).mp3 in Resources */,
 				8816BF2F1C5D7528009AC8BB /* Trail.sks in Resources */,
 				0FC747051C5ED032003F9A6D /* Footsteps 1.mp3 in Resources */,
 				0FC747081C5ED032003F9A6D /* Hello, welcome to our little game (intro line 1).mp3 in Resources */,
 				0FC7471A1C5ED032003F9A6D /* Spooky MUSIC.mp3 in Resources */,
-				883C5FC21C5EA0D60000DA94 /* spark.png in Resources */,
 				0FC747041C5ED032003F9A6D /* Electrical zap 4.mp3 in Resources */,
 				0FC747261C5ED032003F9A6D /* Zip Swish 4.mp3 in Resources */,
 				0FC7470C1C5ED032003F9A6D /* Lounge MUSIC.mp3 in Resources */,
@@ -441,7 +440,6 @@
 				0FC747001C5ED032003F9A6D /* Demonic Growl 1 (normal).mp3 in Resources */,
 				8816BF3B1C5DDD6C009AC8BB /* Card.storyboard in Resources */,
 				0FC7471F1C5ED032003F9A6D /* There are so many ways (intro line 3 NO FX).mp3 in Resources */,
-				0FC746CA1C5DC3BB003F9A6D /* SadWalkCycle.atlas in Resources */,
 				0FC7470E1C5ED032003F9A6D /* Pin insert 2.mp3 in Resources */,
 				0FC7471E1C5ED032003F9A6D /* Sticker Slap 4.mp3 in Resources */,
 				0FC747031C5ED032003F9A6D /* Electrical zap 3.mp3 in Resources */,

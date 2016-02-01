@@ -130,8 +130,8 @@ class GregsDayScene: SKScene {
         
         switch (type) {
         case .Normal, .Moonwalk:
-            atlas = SKTextureAtlas(named: "RegularWalkCycle")
-            imageName = "RegularWalkCycle_000%02d.png"
+            atlas = SKTextureAtlas(named: "Rich_Regular")
+            imageName = "RichRegular_000%02d.png"
             
             break
         case .Happy:
@@ -140,8 +140,8 @@ class GregsDayScene: SKScene {
             
             break
         case .Sad:
-            atlas = SKTextureAtlas(named: "SadWalkCycle")
-            imageName = "SadWalkCycle_000%02d.png"
+            atlas = SKTextureAtlas(named: "Rich_SadWalkCycle")
+            imageName = "Rich_SadWalkCycle_000%02d.png"
             
             break
         case .Zapp:
