@@ -84,13 +84,19 @@
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" alignment="center" spacing="50" translatesAutoresizingMaskIntoConstraints="NO" id="owI-k1-4x3">
                                 <rect key="frame" x="103" y="204" width="395" height="376"/>
                                 <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0e3-Cs-d60" userLabel="Good Button">
+                                    <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0e3-Cs-d60" userLabel="Good Button">
                                         <rect key="frame" x="0.0" y="0.0" width="395" height="163"/>
                                         <state key="normal" image="GoodButton"/>
+                                        <connections>
+                                            <action selector="chooseYourDestiny:" destination="i7u-lL-qyh" eventType="touchUpInside" id="wf7-WN-TU3"/>
+                                        </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="swC-7e-G1g" userLabel="Evil Button">
                                         <rect key="frame" x="0.0" y="213" width="395" height="163"/>
                                         <state key="normal" image="EvilButton"/>
+                                        <connections>
+                                            <action selector="chooseYourDestiny:" destination="i7u-lL-qyh" eventType="touchUpInside" id="nxL-pG-m3P"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                                 <constraints>
