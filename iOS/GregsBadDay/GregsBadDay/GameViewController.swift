@@ -140,11 +140,7 @@ class GameViewController: UIViewController {
                 pin.addParticleSystem(particleSystem!)
 
                 particleSystem?.particleColor = sharedGameDataController().affinity == .Bad ? UIColor.redColor() : UIColor.blueColor()
-                particleSystem?.birthRate = 10000
                 particleSystem?.emitterShape = pin.geometry
-                print(particleSystem?.emittingDirection)
-                particleSystem?.emittingDirection = SCNVector3Make(0.0, 0.0, 1.0)
-//                print("Added particle system: \(particleSystem!) to pin: \(pin)")
 
                 currentPinNumber++
                 animatePinToCoordinates(pin, coordinates: result.worldCoordinates)
