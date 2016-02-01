@@ -82,8 +82,14 @@ class GameDataController: NSObject {
     
     func roundResultDictionaryForData(data:NSData)-> [String: AnyObject] {
         
-        let dictionary = try! NSJSONSerialization.JSONObjectWithData(data, options:[]) as! [String: AnyObject]
-        return dictionary
+        do {
+            let dictionary = try NSJSONSerialization.JSONObjectWithData(data, options:[]) as! [String: AnyObject]
+            return dictionary
+        }
+        catch {
+            let dictionary = ["": ""]
+            return dictionary
+        }
     }
     
     func roundResultForData(data:NSData)-> RoundResult {

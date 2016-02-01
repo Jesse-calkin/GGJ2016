@@ -34,9 +34,9 @@ class GameViewController: UIViewController {
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
         
-        setupRoundWithLength(roundLength)
-        
         sharedGameSoundController().playSoundWithName("Demonic Growl 1 (ECHO)")
+        
+        setupRoundWithLength(200)
     }
     
     func setupScene() {
@@ -137,7 +137,13 @@ class GameViewController: UIViewController {
                 }
                 
                 let pin = pins[currentPinNumber]
-                
+
+                let particleSystem = SCNParticleSystem(named: "Reactor", inDirectory: "art.scnassets")
+                pin.addParticleSystem(particleSystem!)
+
+                particleSystem?.particleColor = sharedGameDataController().affinity == .Bad ? UIColor.redColor() : UIColor.blueColor()
+                particleSystem?.emitterShape = pin.geometry
+
                 currentPinNumber++
                 animatePinToCoordinates(pin, coordinates: result.worldCoordinates)
             }
