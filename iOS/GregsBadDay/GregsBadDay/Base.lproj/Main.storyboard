@@ -176,6 +176,8 @@
                                 <exclude reference="owI-k1-4x3"/>
                             </mask>
                             <mask key="constraints">
+                                <exclude reference="2qQ-6R-mrV"/>
+                                <exclude reference="ZEo-LD-VWb"/>
                                 <exclude reference="0aF-A0-rHk"/>
                                 <exclude reference="1Pc-7N-RR8"/>
                                 <exclude reference="Crc-yM-ceX"/>
@@ -183,8 +185,6 @@
                                 <exclude reference="JGX-Of-bLC"/>
                                 <exclude reference="RqW-sv-mVR"/>
                                 <exclude reference="ViL-r4-Xdf"/>
-                                <exclude reference="2qQ-6R-mrV"/>
-                                <exclude reference="ZEo-LD-VWb"/>
                             </mask>
                         </variation>
                         <variation key="heightClass=regular-widthClass=compact">
@@ -193,10 +193,10 @@
                                 <include reference="owI-k1-4x3"/>
                             </mask>
                             <mask key="constraints">
+                                <include reference="ZEo-LD-VWb"/>
                                 <include reference="E18-0k-L0r"/>
                                 <include reference="JGX-Of-bLC"/>
                                 <include reference="RqW-sv-mVR"/>
-                                <include reference="ZEo-LD-VWb"/>
                             </mask>
                         </variation>
                         <variation key="heightClass=regular-widthClass=regular">
@@ -204,10 +204,10 @@
                                 <include reference="70U-Aa-e0n"/>
                             </mask>
                             <mask key="constraints">
+                                <include reference="2qQ-6R-mrV"/>
                                 <include reference="0aF-A0-rHk"/>
                                 <include reference="1Pc-7N-RR8"/>
                                 <include reference="Crc-yM-ceX"/>
-                                <include reference="2qQ-6R-mrV"/>
                             </mask>
                         </variation>
                     </view>
