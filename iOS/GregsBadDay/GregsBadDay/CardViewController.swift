@@ -29,6 +29,12 @@ class CardViewController: UIViewController {
             skView.presentScene(scene)
         }
     }
+    
+    override func viewDidAppear(animated: Bool) {
+        super.viewDidAppear(animated)
+        
+        sharedGameSoundController().playSoundWithName("Latin Speak (ECHO)")
+    }
 
     override func shouldAutorotate() -> Bool {
         return true

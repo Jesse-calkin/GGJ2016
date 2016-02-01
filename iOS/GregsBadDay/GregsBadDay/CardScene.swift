@@ -34,17 +34,22 @@ class CardScene: SKScene {
     var card: SKSpriteNode?
     var hitboxes = [SKNode]()
 
+    let goodColor = UIColor(red: 0.4, green: 1.0, blue: 1.0, alpha: 1.0)
+    let badColor = UIColor(red: 0.9873, green: 0.2447, blue: 0.2869, alpha: 1.0)
+
     override func didMoveToView(view: SKView) {
         trail = SKEmitterNode(fileNamed: "Trail.sks")
         if let trail = trail {
             trail.name = "Trail"
+            trail.particleColorSequence = nil
+            trail.particleColor = sharedGameDataController().affinity == .Bad ? badColor : goodColor
             addChild(trail)
         }
 
         card = childNodeWithName("Card") as? SKSpriteNode
         magic = childNodeWithName("magic") as? SKEmitterNode
         if let magic = magic {
-            magic.particleColor = UIColor.redColor()
+            magic.particleColor = sharedGameDataController().affinity == .Bad ? badColor : goodColor
         }
 
         self.enumerateChildNodesWithName("hitbox") { node, stop in

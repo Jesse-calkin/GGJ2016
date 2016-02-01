@@ -13,9 +13,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
     var gameDataController: GameDataController
+    var gameSoundController : GameSoundController
     
     override init() {
         gameDataController = GameDataController()
+        gameSoundController = GameSoundController()
         
         super.init()
     }
