@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+                android:id="@+id/root_view"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:weightSum="1">
+
+
+    <View
+        android:id="@+id/test_view"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_centerInParent="true"
+        android:background="#FF0000"
+        android:visibility="gone"/>
+
+    <View
+        android:id="@+id/second_test_view"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_below="@id/test_view"
+        android:background="#FF0000"
+        android:visibility="gone"/>
+
+    <ImageView
+        android:id="@+id/voodoo_target_map"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:src="@drawable/voodoo_target_map"/>
+
+    <ImageView
+        android:id="@+id/voodoo_scene"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:src="@drawable/voodoo_scene"/>
+
+
+    <!--<LinearLayout-->
+        <!--android:id="@+id/button_container_1"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:layout_alignParentBottom="true"-->
+        <!--android:orientation="horizontal">-->
+
+        <!--<Button-->
+            <!--android:id="@+id/open_sandbox_disrupt"-->
+            <!--android:layout_width="0dp"-->
+            <!--android:layout_weight="1"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:text="@string/open_sandbox_disrupt"/>-->
+
+        <!--<Button-->
+            <!--android:id="@+id/open_sandbox_protect"-->
+            <!--android:layout_width="0dp"-->
+            <!--android:layout_weight="1"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:text="@string/open_sandbox_protect"/>-->
+    <!--</LinearLayout>-->
+
+    <!--<LinearLayout-->
+        <!--android:id="@+id/button_container_2"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:layout_above="@id/button_container_1"-->
+        <!--android:orientation="horizontal">-->
+
+        <!--<Button-->
+            <!--android:id="@+id/open_sandbox_fire"-->
+            <!--android:layout_width="0dp"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:layout_weight="1"-->
+            <!--android:text="@string/open_sandbox_fire"/>-->
+
+        <!--<Button-->
+            <!--android:id="@+id/open_sandbox_love"-->
+            <!--android:layout_width="0dp"-->
+            <!--android:layout_weight="1"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:text="@string/open_sandbox_love"/>-->
+
+        <!--<Button-->
+            <!--android:id="@+id/progression"-->
+            <!--android:layout_width="0dp"-->
+            <!--android:layout_weight="1"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:text="@string/open_sandbox_progression"/>-->
+    <!--</LinearLayout>-->
+
+</RelativeLayout>
